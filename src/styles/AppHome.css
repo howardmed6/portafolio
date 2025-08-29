@@ -1,3 +1,18 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* pantalla completa */
+}
+
+main {
+  flex: 1; /* empuja el footer hacia abajo */
+}
+
 .app-home {
     background: linear-gradient(135deg, #0a0a23 0%, #1a1a3e 50%, #0f172a 100%);
     color: white;

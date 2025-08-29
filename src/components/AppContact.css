@@ -1,0 +1,263 @@
+
+
+.futuristic-contact-section {
+  max-width: 1000px;
+  margin: 60px auto 100px;
+  padding: 25px;
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+              0 0 20px rgba(0, 255, 255, 0.1);
+  display: flex;
+  gap: 40px;
+  transition: all 0.3s ease;
+}
+
+.futuristic-contact-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4),
+              0 0 30px rgba(0, 255, 255, 0.15);
+}
+
+.futuristic-contact-form {
+  flex: 1.2;
+  background: rgba(26, 26, 46, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.futuristic-contact-form:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 255, 255, 0.3);
+}
+
+.futuristic-contact-info {
+  flex: 1;
+  background: rgba(26, 26, 46, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.futuristic-contact-info:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 255, 255, 0.3);
+}
+
+.futuristic-section-title {
+  color: #00d4aa;
+  text-shadow: 0 0 10px rgba(0, 212, 170, 0.5),
+               0 0 20px rgba(0, 212, 170, 0.3);
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+  padding-bottom: 10px;
+  font-weight: 600;
+}
+
+.futuristic-form-group {
+  margin-bottom: 20px;
+}
+
+.futuristic-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #00d4aa;
+  font-weight: 600;
+  text-shadow: 0 0 5px rgba(0, 212, 170, 0.3);
+}
+
+.futuristic-input, .futuristic-textarea {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(16, 16, 32, 0.8);
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  border-radius: 10px;
+  font-size: 16px;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.futuristic-input:focus, .futuristic-textarea:focus {
+  outline: none;
+  border-color: #00d4aa;
+  box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.2),
+              0 0 15px rgba(0, 255, 255, 0.1);
+  background: rgba(16, 16, 32, 0.9);
+}
+
+.futuristic-input::placeholder, .futuristic-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.futuristic-textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.futuristic-submit-btn {
+  background: linear-gradient(135deg,
+              rgba(0, 212, 170, 0.8),
+              rgba(0, 255, 255, 0.6));
+  color: white;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.futuristic-submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg,
+              rgba(0, 212, 170, 1),
+              rgba(0, 255, 255, 0.8));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 170, 0.4),
+              0 0 20px rgba(0, 255, 255, 0.3);
+  border-color: #00d4aa;
+}
+
+.futuristic-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.futuristic-info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  padding: 15px;
+  background: rgba(16, 16, 32, 0.6);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.futuristic-info-item:hover {
+  background: rgba(16, 16, 32, 0.8);
+  border-color: rgba(0, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 255, 0.1);
+}
+
+.futuristic-info-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg,
+              rgba(0, 212, 170, 0.8),
+              rgba(0, 255, 255, 0.6));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 212, 170, 0.3);
+  transition: all 0.3s ease;
+}
+
+.futuristic-info-item:hover .futuristic-info-icon {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 212, 170, 0.5);
+}
+
+.futuristic-info-content {
+  flex-grow: 1;
+}
+
+.futuristic-info-title {
+  font-weight: 600;
+  color: #00d4aa;
+  text-shadow: 0 0 8px rgba(0, 212, 170, 0.5);
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+}
+
+.futuristic-info-text {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.futuristic-info-text a {
+  color: #00d4aa;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(0, 212, 170, 0.3);
+}
+
+.futuristic-info-text a:hover {
+  color: #00ffff;
+  text-decoration: underline;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.futuristic-status-message {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.futuristic-success {
+  background: rgba(0, 212, 170, 0.2);
+  color: #00d4aa;
+  border: 2px solid rgba(0, 212, 170, 0.4);
+  text-shadow: 0 0 5px rgba(0, 212, 170, 0.3);
+}
+
+.futuristic-error {
+  background: rgba(255, 82, 82, 0.2);
+  color: #ff5252;
+  border: 2px solid rgba(255, 82, 82, 0.4);
+  text-shadow: 0 0 5px rgba(255, 82, 82, 0.3);
+}
+
+@media (max-width: 768px) {
+  .futuristic-contact-section {
+    flex-direction: column;
+    margin: 40px auto 80px;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .futuristic-contact-form, .futuristic-contact-info {
+    padding: 20px;
+  }
+
+  .futuristic-section-title {
+    font-size: 1.3rem;
+  }
+
+  .futuristic-info-item {
+    padding: 10px;
+  }
+}
