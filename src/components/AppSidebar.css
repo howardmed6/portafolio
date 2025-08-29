@@ -1,8 +1,19 @@
+html, body {
+  overflow-x: hidden; /* mata scroll horizontal global */
+}
+
+.cosmic-header nav ul {
+  flex-wrap: wrap; /* evita que los li se vayan de largo */
+  max-width: 100%;
+}
+
+
+
 .cosmic-sidebar {
   position: fixed;
   top: 0;              /* ✅ empieza arriba */
   right: 0;
-  width: 60px;         /* ✅ más delgado */
+  width: 36px;         /* ✅ más delgado */
   height: 100vh;       /* ✅ cubre todo el alto de la pantalla */
   padding: 20px 5px;
   z-index: 999;
@@ -74,19 +85,21 @@
 }
 
 @media (max-width: 768px) {
-  .cosmic-sidebar {
-    transform: translateX(100%);
-    width: 60px;        /* un poco más ancho en móvil */
-    height: 100vh;      /* también de arriba a abajo */
-    border-left: 2px solid rgba(100, 255, 218, 0.4);
+  .cosmic-header nav ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
   }
 
-  .cosmic-sidebar.active {
-    transform: translateX(0);
+  .cosmic-header nav ul li {
+    width: 100%;
   }
 
-  .social-icon {
-    width: 36px;  /* un pelín más grandes en móvil */
-    height: 36px;
+  .cosmic-header nav ul li a {
+    width: 100%;
+    display: block;
+    text-align: center;
   }
 }
