@@ -1,9 +1,46 @@
+.app-home {
+    background: linear-gradient(135deg, #0a0a23 0%, #1a1a3e 50%, #0f172a 100%);
+    color: white;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
 .main-content {
-    margin: 90px auto 10px;
     padding: 20px;
     max-width: 1200px;
+    margin: 0 auto;
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 section {
@@ -17,17 +54,36 @@ h2 {
     font-size: 2rem;
     padding-bottom: 10px;
     text-shadow: 0 0 10px rgba(72, 202, 228, 0.5);
+    background: linear-gradient(45deg, #48cae4, #00d4aa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h3 {
+    color: #00d4aa;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    text-shadow: 0 0 8px rgba(0, 212, 170, 0.4);
+}
+
+h4 {
+    color: #a855f7;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
 }
 
 a {
     color: aqua;
     text-decoration: none;
     transition: all 0.3s;
+    position: relative;
 }
 
 a:hover {
     color: #48cae4;
-    text-shadow: 0 0 5px rgba(72, 202, 228, 0.8);
+    text-shadow: 0 0 8px rgba(72, 202, 228, 0.8);
+    transform: translateX(5px);
 }
 
 .futuristic-card {
@@ -37,7 +93,7 @@ a:hover {
     padding: 25px;
     margin: 20px 0;
     position: relative;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     box-shadow:
         0 4px 15px rgba(72, 202, 228, 0.05),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -46,11 +102,11 @@ a:hover {
 }
 
 .futuristic-card:hover {
-    border-color: rgba(72, 202, 228, 0.3);
+    border-color: rgba(72, 202, 228, 0.4);
     box-shadow:
-        0 8px 25px rgba(72, 202, 228, 0.1),
+        0 8px 25px rgba(72, 202, 228, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transform: translateY(-3px);
+    transform: translateY(-5px) scale(1.02);
 }
 
 .profile-card,
@@ -59,10 +115,10 @@ a:hover {
     background: rgba(30, 58, 138, 0.05);
     border: 1px solid rgba(72, 202, 228, 0.15);
     border-radius: 12px;
-    padding: 25px;
-    margin: 20px 0;
+    padding: 20px;
+    margin: 15px 0;
     position: relative;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
     box-shadow:
         0 4px 15px rgba(72, 202, 228, 0.05),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -80,6 +136,14 @@ a:hover {
     transform: translateY(-3px);
 }
 
+.project-pair {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     .main-content {
         padding: 10px;
@@ -100,5 +164,28 @@ a:hover {
     .project-item {
         padding: 15px;
         margin: 15px 0;
+    }
+
+    .project-pair {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 5px;
+        margin-top: 60px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .futuristic-card,
+    .certificate-item,
+    .project-item {
+        padding: 12px;
+        margin: 10px 0;
     }
 }
