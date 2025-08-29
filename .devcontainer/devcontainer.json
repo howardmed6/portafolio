@@ -1,0 +1,12 @@
+{
+  "name": "Vue.js",
+  "forwardPorts": [3000, 5173],
+  "portsAttributes": {
+    "3000": {
+      "label": "Vue App"
+    },
+    "5173": {
+      "label": "Vite Dev Server"
+    }
+  }
+}
