@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;              /* ✅ empieza arriba */
   right: 0;
-  width: 50px;         /* ✅ más delgado */
+  width: 60px;         /* ✅ más delgado */
   height: 100vh;       /* ✅ cubre todo el alto de la pantalla */
   padding: 20px 5px;
   z-index: 999;
