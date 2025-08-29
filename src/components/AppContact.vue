@@ -76,7 +76,7 @@
         <div class="futuristic-info-content">
           <h3 class="futuristic-info-title">LinkedIn</h3>
           <p class="futuristic-info-text">
-            <a href="https://www.linkedin.com/in/howardmedina" target="_blank">linkedin.com/in/howardmedina</a>
+            <a href="https://www.linkedin.com/in/howardmedina" target="_blank">linkedin.com/in/howardmed7</a>
           </p>
         </div>
       </div>
@@ -106,7 +106,7 @@
         <div class="futuristic-info-content">
           <h3 class="futuristic-info-title">Email</h3>
           <p class="futuristic-info-text">
-            <a href="mailto:howard@ejemplo.com">howard@ejemplo.com</a>
+            <a href="mailto:howard@ejemplo.com">howardmed7@gmail.com</a>
           </p>
         </div>
       </div>

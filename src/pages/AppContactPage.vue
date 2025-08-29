@@ -25,10 +25,10 @@
       <main class="main-content">
         <!-- Tus secciones específicas de ESTA página -->
         <section class="mi-seccion-unica">
-          <h2>Mi Otra Página</h2>
+          <h2>Envíame un mensaje o llamame</h2>
           <div class="contenido-unico">
-            <h3>Este es mi contenido específico</h3>
-            <p>Aquí va el contenido diferente para esta página...</p>
+            <h3>Este es mi portafolio de contacto específico</h3>
+            <p>Telefono, WhatsApp, LinkedIn, Corre y más</p>
           </div>
         </section>
 
