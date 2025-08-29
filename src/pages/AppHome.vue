@@ -26,10 +26,10 @@
 
 
         <section class="demo-section">
-          <h2>Bienvenido al Cosmos Digital</h2>
+          <h2>Bienvenido al Portafolio de Howard</h2>
           <div class="futuristic-card">
-            <h3>Mi Portfolio Cósmico</h3>
-            <p>Explora el universo del desarrollo de software...</p>
+            <h3>Logros</h3>
+            <p>Mira mi perfil, mis certificaciones y algunos proyectos en los que trabajé</p>
           </div>
         </section>
       </main>
