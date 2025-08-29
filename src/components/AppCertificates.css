@@ -1,0 +1,345 @@
+/* AppCertificates.css - Estilos futuristas para certificaciones */
+
+.futuristic-certificates-section {
+  padding: 40px 0;
+  min-height: calc(100vh - 200px);
+}
+
+.futuristic-certificates-container {
+  max-width: 1000px;
+  margin: 60px auto 100px;
+  padding: 30px;
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+              0 0 20px rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.futuristic-certificates-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4),
+              0 0 30px rgba(0, 255, 255, 0.15);
+}
+
+.futuristic-section-title {
+  color: #00d4aa;
+  text-shadow: 0 0 10px rgba(0, 212, 170, 0.5),
+               0 0 20px rgba(0, 212, 170, 0.3);
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  font-weight: 600;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+}
+
+.futuristic-certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.futuristic-certificate-item {
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3),
+              0 0 15px rgba(0, 212, 170, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.futuristic-certificate-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4aa, transparent);
+  animation: certificateGlow 5s linear infinite;
+}
+
+.futuristic-certificate-item:nth-child(2n)::before {
+  animation-delay: 1.5s;
+}
+
+.futuristic-certificate-item:nth-child(3n)::before {
+  animation-delay: 3s;
+}
+
+@keyframes certificateGlow {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.futuristic-certificate-item:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 255, 255, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4),
+              0 0 25px rgba(0, 212, 170, 0.2);
+}
+
+/* Estilos especiales para certificaciones en progreso */
+.futuristic-certificate-item.in-progress {
+  border-color: rgba(255, 165, 0, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3),
+              0 0 15px rgba(255, 165, 0, 0.1);
+}
+
+.futuristic-certificate-item.in-progress::before {
+  background: linear-gradient(90deg, transparent, #ff9500, transparent);
+}
+
+/* === ICONO DE CERTIFICACIÓN === */
+.futuristic-certificate-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg,
+              rgba(0, 212, 170, 0.8),
+              rgba(0, 255, 255, 0.8));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 212, 170, 0.4);
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.futuristic-certificate-item.in-progress .futuristic-certificate-icon {
+  background: linear-gradient(135deg,
+              rgba(255, 149, 0, 0.8),
+              rgba(255, 193, 7, 0.8));
+  border-color: rgba(255, 165, 0, 0.5);
+  box-shadow: 0 0 15px rgba(255, 165, 0, 0.4);
+}
+
+.futuristic-certificate-item:hover .futuristic-certificate-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 25px rgba(0, 212, 170, 0.6);
+}
+
+/* === CONTENIDO DE CERTIFICACIÓN === */
+.futuristic-certificate-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.futuristic-certificate-title {
+  color: #00d4aa;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(0, 212, 170, 0.5);
+  transition: all 0.3s ease;
+  line-height: 1.3;
+}
+
+.futuristic-certificate-item:hover .futuristic-certificate-title {
+  color: #00ffff;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+}
+
+.futuristic-certificate-issuer {
+  color: #00ffff;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+.futuristic-certificate-year {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* === HABILIDADES === */
+.futuristic-certificate-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.futuristic-skill-tag {
+  background: rgba(0, 212, 170, 0.2);
+  border: 1px solid rgba(0, 212, 170, 0.4);
+  color: #00d4aa;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(0, 212, 170, 0.3);
+}
+
+.futuristic-skill-tag:hover {
+  background: rgba(0, 212, 170, 0.3);
+  border-color: rgba(0, 212, 170, 0.6);
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 212, 170, 0.3);
+}
+
+/* === BARRA DE PROGRESO === */
+.futuristic-progress-indicator {
+  margin-top: 15px;
+}
+
+.futuristic-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.futuristic-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff9500, #ffc107);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+  animation: progressPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes progressPulse {
+  0% { box-shadow: 0 0 10px rgba(255, 165, 0, 0.5); }
+  100% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.8); }
+}
+
+.futuristic-progress-text {
+  color: #ff9500;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 5px;
+  display: block;
+  text-shadow: 0 0 5px rgba(255, 165, 0, 0.4);
+}
+
+/* === BADGE DE ESTADO === */
+.futuristic-certificate-status {
+  align-self: flex-end;
+}
+
+.futuristic-status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.futuristic-status-badge.completed {
+  background: rgba(0, 212, 170, 0.2);
+  border: 1px solid rgba(0, 212, 170, 0.5);
+  color: #00d4aa;
+  text-shadow: 0 0 5px rgba(0, 212, 170, 0.4);
+}
+
+.futuristic-status-badge.in-progress {
+  background: rgba(255, 149, 0, 0.2);
+  border: 1px solid rgba(255, 149, 0, 0.5);
+  color: #ff9500;
+  text-shadow: 0 0 5px rgba(255, 149, 0, 0.4);
+}
+
+.futuristic-status-badge:hover {
+  transform: scale(1.05);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .futuristic-certificates-container {
+    margin: 40px auto 80px;
+    padding: 20px;
+  }
+
+  .futuristic-certificates-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .futuristic-section-title {
+    font-size: 1.6rem;
+  }
+
+  .futuristic-certificate-item {
+    padding: 20px;
+  }
+
+  .futuristic-certificate-title {
+    font-size: 1.1rem;
+  }
+
+  .futuristic-certificate-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .futuristic-certificates-container {
+    margin: 30px auto 60px;
+    padding: 15px;
+  }
+
+  .futuristic-certificate-item {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .futuristic-certificate-title {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .futuristic-skill-tag {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+}
+
+/* === ANIMACIONES DE ENTRADA === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.futuristic-certificate-item {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.futuristic-certificate-item:nth-child(1) { animation-delay: 0.1s; }
+.futuristic-certificate-item:nth-child(2) { animation-delay: 0.2s; }
+.futuristic-certificate-item:nth-child(3) { animation-delay: 0.3s; }
+.futuristic-certificate-item:nth-child(4) { animation-delay: 0.4s; }
+.futuristic-certificate-item:nth-child(5) { animation-delay: 0.5s; }

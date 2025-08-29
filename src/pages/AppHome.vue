@@ -39,6 +39,15 @@
         <AppProfile />
      </section>
 
+
+     <section >
+        <AppCertificates />
+     </section>
+
+     <section>
+      <AppProjects />
+     </section>
+
      <section>
       <AppContact />
      </section>
@@ -54,6 +63,8 @@ import AppSidebar from '../components/AppSidebar.vue'
 import AppFooter from '../components/AppFooter.vue'
 import AppContact from '@/components/AppContact.vue'
 import AppProfile from '@/components/AppProfile.vue'
+import AppProjects from '@/components/AppProjects.vue'
+import AppCertificates from '@/components/AppCertificates.vue'
 
 
 
@@ -65,6 +76,8 @@ export default {
     AppFooter,
     AppContact,
     AppProfile,
+    AppProjects,
+    AppCertificates
   },
   setup() {
     const stars = ref([])
