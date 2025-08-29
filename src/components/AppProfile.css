@@ -1,0 +1,341 @@
+/* AppProfile.css - Estilos futuristas para perfil y carrusel */
+
+.futuristic-profile-wrapper {
+  display: flex;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 25px;
+  flex-wrap: wrap;
+}
+
+/* === SECCIÓN PERFIL === */
+.futuristic-profile-card {
+  flex: 1;
+  min-width: 300px;
+  background: rgba(26, 26, 46, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+              0 0 20px rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.futuristic-profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4aa, transparent);
+  animation: profileGlow 3s linear infinite;
+}
+
+@keyframes profileGlow {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.futuristic-profile-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 255, 255, 0.4);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4),
+              0 0 30px rgba(0, 255, 255, 0.15);
+}
+
+.futuristic-profile-header {
+  text-align: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.futuristic-profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #00d4aa;
+  box-shadow: 0 0 25px rgba(0, 212, 170, 0.5);
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.futuristic-profile-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(0, 212, 170, 0.7);
+}
+
+.futuristic-profile-name {
+  color: #00d4aa;
+  font-size: 1.8rem;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(0, 212, 170, 0.5);
+  font-weight: 600;
+}
+
+.futuristic-profile-info {
+  list-style: none;
+  padding: 0;
+}
+
+.futuristic-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding: 12px;
+  background: rgba(16, 16, 32, 0.6);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.futuristic-info-item:hover {
+  background: rgba(16, 16, 32, 0.8);
+  border-color: rgba(0, 255, 255, 0.3);
+  transform: translateX(5px);
+}
+
+.futuristic-info-label {
+  color: #00ffff;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-right: 15px;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+.futuristic-info-value {
+  color: rgba(255, 255, 255, 0.9);
+  text-align: right;
+  flex: 1;
+}
+
+.futuristic-profession-item {
+  background: rgba(0, 212, 170, 0.1);
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  border-radius: 15px;
+  padding: 5px 10px;
+  margin: 3px 0;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #00d4aa;
+  transition: all 0.3s ease;
+}
+
+.futuristic-profession-item:hover {
+  background: rgba(0, 212, 170, 0.2);
+  border-color: rgba(0, 212, 170, 0.5);
+  transform: scale(1.02);
+}
+
+/* === SECCIÓN CARRUSEL === */
+.futuristic-carousel-section {
+  flex: 2;
+  min-width: 400px;
+}
+
+.futuristic-section-title {
+  color: #00d4aa;
+  text-shadow: 0 0 10px rgba(0, 212, 170, 0.5);
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.futuristic-carousel-container {
+  background: rgba(26, 26, 46, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+              0 0 20px rgba(0, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.futuristic-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.futuristic-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.5s ease;
+}
+
+.futuristic-slide.futuristic-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.futuristic-slide img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.futuristic-slide img:hover {
+  border-color: rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.futuristic-slide-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #00d4aa;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 0 5px rgba(0, 212, 170, 0.5);
+  border-radius: 0 0 10px 10px;
+}
+
+/* === NAVEGACIÓN === */
+.futuristic-navigation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.futuristic-nav-button {
+  background: rgba(0, 212, 170, 0.8);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  pointer-events: all;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.futuristic-nav-button:hover {
+  background: rgba(0, 255, 255, 0.8);
+  border-color: #00d4aa;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+/* === INDICADORES === */
+.futuristic-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.futuristic-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.futuristic-indicator:hover {
+  background: rgba(0, 255, 255, 0.5);
+  border-color: #00d4aa;
+  transform: scale(1.2);
+}
+
+.futuristic-indicator.futuristic-active {
+  background: #00d4aa;
+  border-color: #00ffff;
+  box-shadow: 0 0 10px rgba(0, 212, 170, 0.6);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .futuristic-profile-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .futuristic-carousel-section {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 768px) {
+  .futuristic-profile-wrapper {
+    margin: 40px auto;
+    padding: 15px;
+  }
+
+  .futuristic-profile-card,
+  .futuristic-carousel-container {
+    padding: 20px;
+  }
+
+  .futuristic-section-title {
+    font-size: 1.5rem;
+  }
+
+  .futuristic-profile-name {
+    font-size: 1.5rem;
+  }
+
+  .futuristic-carousel-wrapper {
+    height: 250px;
+  }
+
+  .futuristic-slide img {
+    height: 200px;
+  }
+
+  .futuristic-info-item {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .futuristic-info-label {
+    margin-right: 0;
+  }
+
+  .futuristic-info-value {
+    text-align: left;
+  }
+
+  .futuristic-nav-button {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+}

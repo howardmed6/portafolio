@@ -21,37 +21,9 @@
       <AppSidebar />
 
       <main class="main-content">
-        <!--
-        ====================================================================
-        AQUÍ VAN TUS SECCIONES - Ejemplo de estructura sugerida:
-        ====================================================================
 
-        <section class="hero-section">
-          // Sección de bienvenida/presentación principal
-        </section>
 
-        <section class="about-section">
-          // Sección "Sobre mí" o presentación personal
-        </section>
 
-        <section class="certificates-section">
-          // Sección de certificaciones (usando tu array certificates)
-        </section>
-
-        <section class="projects-section">
-          // Sección de proyectos (usando tu array projectPairs)
-        </section>
-
-        <section class="skills-section">
-          // Sección de habilidades técnicas
-        </section>
-
-        <section class="contact-section">
-          // Sección de contacto
-        </section>
-
-        ====================================================================
-        -->
 
         <section class="demo-section">
           <h2>Bienvenido al Cosmos Digital</h2>
@@ -63,6 +35,14 @@
       </main>
     </div>
 
+     <section >
+        <AppProfile />
+     </section>
+
+     <section>
+      <AppContact />
+     </section>
+
     <AppFooter />
   </div>
 </template>
@@ -72,13 +52,19 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import AppHeader from '../components/AppHeader.vue'
 import AppSidebar from '../components/AppSidebar.vue'
 import AppFooter from '../components/AppFooter.vue'
+import AppContact from '@/components/AppContact.vue'
+import AppProfile from '@/components/AppProfile.vue'
+
+
 
 export default {
   name: 'AppHome',
   components: {
     AppHeader,
     AppSidebar,
-    AppFooter
+    AppFooter,
+    AppContact,
+    AppProfile,
   },
   setup() {
     const stars = ref([])
