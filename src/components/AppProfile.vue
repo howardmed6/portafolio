@@ -4,7 +4,7 @@
     <!-- Sección del Perfil -->
     <div class="futuristic-profile-card">
       <div class="futuristic-profile-header">
-        <img src="../image/icon.svg" alt="Howard Medina Pineda" class="futuristic-profile-image">
+        <img src="/image/icon.svg" alt="Howard Medina Pineda" class="futuristic-profile-image">
         <h1 class="futuristic-profile-name">Howard Medina Pineda</h1>
       </div>
 
