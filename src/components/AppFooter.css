@@ -2,24 +2,23 @@
   background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 50%, #000511 100%);
   color: #ccd6f6;
   width: 100%;
-  padding: 15px 20px;
+  padding: 5px 10px; /* 3 veces más compacto */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 6px; /* reducido */
   margin-top: auto;
-  position: sticky;
-  bottom: 0;
+  position: relative; /* ya no es sticky */
   border-top: 1px solid rgba(100, 255, 218, 0.3);
   backdrop-filter: blur(10px);
   box-shadow:
-    0 -4px 20px rgba(100, 255, 218, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 -2px 10px rgba(100, 255, 218, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .footer-links {
   display: flex;
-  gap: 25px;
+  gap: 15px; /* más compacto */
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -27,8 +26,8 @@
 .footer-links a {
   color: #ccd6f6;
   text-decoration: none;
-  font: 1rem 'Courier New', monospace;
-  padding: 8px 12px;
+  font: 0.85rem 'Courier New', monospace; /* más pequeño */
+  padding: 4px 8px; /* más compacto */
   border-radius: 4px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -38,7 +37,7 @@
   color: #64ffda;
   background: rgba(100, 255, 218, 0.1);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.2);
+  box-shadow: 0 4px 10px rgba(100, 255, 218, 0.2);
 }
 
 .footer-links a::after {
@@ -57,7 +56,7 @@
 }
 
 .cosmic-footer p {
-  font: 0.9rem 'Courier New', monospace;
+  font: 0.75rem 'Courier New', monospace; /* más pequeño */
   text-align: center;
   margin: 0;
   color: rgba(204, 214, 246, 0.7);
@@ -66,28 +65,29 @@
 
 @media (max-width: 768px) {
   .cosmic-footer {
-    padding: 12px 15px;
+    padding: 4px 8px;
   }
 
   .footer-links {
-    gap: 20px;
+    gap: 10px;
   }
 
   .footer-links a {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    padding: 3px 6px;
   }
 
   .cosmic-footer p {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 
 @media (max-width: 480px) {
   .cosmic-footer {
-    padding: 10px;
+    padding: 3px 6px;
   }
 
   .footer-links {
-    gap: 15px;
+    gap: 8px;
   }
 }

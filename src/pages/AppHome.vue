@@ -10,7 +10,7 @@
       <section class="profile-section">
         <div class="profile-card">
           <div class="profile-avatar">
-            <img src="/image/icon.svg" alt="Howard Medina" />
+            <img src="../image/icon.svg" alt="Howard Medina" />
           </div>
           <div class="profile-info">
             <h1>Howard Medina</h1>
@@ -93,7 +93,7 @@ export default {
 </script>
 
 <style scoped>
-@import '@/styles/AppHome.css';
+@import '../styles/AppHome.css';
 
 .layout-container {
   display: flex;
