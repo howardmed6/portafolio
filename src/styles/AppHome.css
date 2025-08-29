@@ -1,0 +1,104 @@
+.main-content {
+    margin: 90px auto 30px;
+    padding: 20px;
+    max-width: 1200px;
+    position: relative;
+    z-index: 2;
+}
+
+section {
+    margin-bottom: 60px;
+}
+
+h2 {
+    color: #48cae4;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2rem;
+    padding-bottom: 10px;
+    text-shadow: 0 0 10px rgba(72, 202, 228, 0.5);
+}
+
+a {
+    color: aqua;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+a:hover {
+    color: #48cae4;
+    text-shadow: 0 0 5px rgba(72, 202, 228, 0.8);
+}
+
+.futuristic-card {
+    background: rgba(30, 58, 138, 0.05);
+    border: 1px solid rgba(72, 202, 228, 0.15);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+    position: relative;
+    backdrop-filter: blur(5px);
+    box-shadow:
+        0 4px 15px rgba(72, 202, 228, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.futuristic-card:hover {
+    border-color: rgba(72, 202, 228, 0.3);
+    box-shadow:
+        0 8px 25px rgba(72, 202, 228, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.profile-card,
+.certificate-item,
+.project-item {
+    background: rgba(30, 58, 138, 0.05);
+    border: 1px solid rgba(72, 202, 228, 0.15);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+    position: relative;
+    backdrop-filter: blur(5px);
+    box-shadow:
+        0 4px 15px rgba(72, 202, 228, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.profile-card:hover,
+.certificate-item:hover,
+.project-item:hover {
+    border-color: rgba(72, 202, 228, 0.3);
+    box-shadow:
+        0 8px 25px rgba(72, 202, 228, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 10px;
+        margin-top: 70px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    section {
+        margin-bottom: 40px;
+    }
+
+    .futuristic-card,
+    .profile-card,
+    .certificate-item,
+    .project-item {
+        padding: 15px;
+        margin: 15px 0;
+    }
+}
