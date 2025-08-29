@@ -25,13 +25,17 @@
       <main class="main-content">
         <!-- Tus secciones específicas de ESTA página -->
         <section class="mi-seccion-unica">
-          <h2>Envíame un mensaje o llamame</h2>
+          <h2>Mira un poco sobre Howard</h2>
           <div class="contenido-unico">
-            <h3>Este es mi portafolio de contacto específico</h3>
+            <h3>Este es un resumen de las etapas de Howard en su formación</h3>
             <p>Telefono, WhatsApp, LinkedIn, Correo y más</p>
           </div>
         </section>
 
+        <section>
+        <AppAboutme />
+
+        </section>
         <section>
         <AppContact />
 
@@ -50,15 +54,20 @@ import AppHeader from '../components/AppHeader.vue'
 import AppSidebar from '../components/AppSidebar.vue'
 import AppFooter from '../components/AppFooter.vue'
 import AppContact from '../components/AppContact.vue'
+import AppAboutme from '../components/AppAboutme.vue'
+
+
+
 
 
 export default {
-  name: 'AppContactPage',
+  name: 'AppAboutmePage',
   components: {
     AppHeader,
     AppSidebar,
     AppFooter,
-    AppContact
+    AppContact,
+    AppAboutme,
   },
   setup() {
     const stars = ref([])
@@ -100,7 +109,7 @@ export default {
 
 /* Agregas solo estilos específicos para esta página si necesitas */
 h2 {
-margin-top: 200px;}
+margin-top: 100px;}
 
 .contenido-unico {
   background: rgba(255, 255, 255, 0.1);
