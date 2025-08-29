@@ -2,7 +2,7 @@
   <footer class="cosmic-footer">
     <div class="footer-links">
       <a href="/cookies">Cookies</a>
-      <a href="/politicas">Políticas</a>
+      <a href="/privacy">Políticas</a>
     </div>
     <p>© HowardMedina {{ currentYear }}</p>
   </footer>

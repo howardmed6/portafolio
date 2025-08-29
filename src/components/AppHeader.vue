@@ -5,7 +5,7 @@
       <button @click="toggleMenu" class="hamburger">☰</button>
       <ul :class="{ show: menuOpen }">
         <li><a @click="closeMenu" href="/">Inicio</a></li>
-        <li><a @click="closeMenu" href="/aboutme">Sobre mí</a></li>
+        <li><a @click="closeMenu" href="/about-me">Sobre mí</a></li>
         <li><a @click="closeMenu" href="/contact">Contacto</a></li>
       </ul>
     </nav>

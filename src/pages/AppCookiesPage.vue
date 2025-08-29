@@ -1,4 +1,4 @@
-<!-- OtraPagina.vue -->
+<!-- CookiesPage.vue -->
 <template>
   <div class="app-home">
     <!-- Fondo estelar reutilizado -->
@@ -23,24 +23,31 @@
       <AppSidebar />
 
       <main class="main-content">
-        <!-- Tus secciones específicas de ESTA página -->
-        <section class="mi-seccion-unica">
-          <h2>Mira un poco sobre Howard</h2>
-          <div class="contenido-unico">
-            <h3>Este es un resumen de las etapas de Howard en su formación</h3>
-            <p>Infancia, adolescencia, juventud y vida actual</p>
+        <!-- Sección específica de cookies -->
+        <section class="cookies-hero-section">
+          <h2>Política de Cookies</h2>
+          <div class="cookies-intro">
+            <h3>Información sobre el uso de cookies en este sitio</h3>
+            <p>Transparencia y privacidad en howardev.site</p>
           </div>
         </section>
 
-        <section>
-        <AppAboutme />
-
+        <section class="cookies-content-section">
+          <div class="cookies-policy-content">
+            <p>
+              Este sitio (<strong>howardev.site</strong>) no utiliza cookies de seguimiento ni análisis.
+              Las únicas cookies son técnicas (funcionamiento básico del sitio).
+            </p>
+            <br>
+            <p>
+              Si me contactas a través del formulario, solo guardaré tu <strong>nombre</strong> y <strong>correo</strong> para responder tu mensaje. No los compartiré con terceros.
+            </p>
+            <br>
+            <p>
+              No hay cuentas de usuario ni inicio de sesión.
+            </p>
+          </div>
         </section>
-        <section>
-        <AppContact />
-
-        </section>
-
       </main>
     </div>
 
@@ -53,21 +60,13 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import AppHeader from '../components/AppHeader.vue'
 import AppSidebar from '../components/AppSidebar.vue'
 import AppFooter from '../components/AppFooter.vue'
-import AppContact from '../components/AppContact.vue'
-import AppAboutme from '../components/AppAboutme.vue'
-
-
-
-
 
 export default {
-  name: 'AppAboutmePage',
+  name: 'AppCookiesPage',
   components: {
     AppHeader,
     AppSidebar,
-    AppFooter,
-    AppContact,
-    AppAboutme,
+    AppFooter
   },
   setup() {
     const stars = ref([])
@@ -107,13 +106,35 @@ export default {
 /* Importas los mismos estilos del Home */
 @import '../styles/AppHome.css';
 
-/* Agregas solo estilos específicos para esta página si necesitas */
+/* Estilos específicos para la página de cookies */
 h2 {
-margin-top: 100px;}
+  margin-top: 70px;
+}
 
-.contenido-unico {
+.cookies-intro {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 2rem;
+}
+
+.cookies-content-section {
+  margin-top: 3rem;
+}
+
+.cookies-policy-content {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+.cookies-policy-content p {
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
+
+.cookies-policy-content strong {
+  color: #fff;
+  font-weight: 600;
 }
 </style>

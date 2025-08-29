@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AppHome from '../pages/AppHome.vue'
-import AppContact from '../pages/AppContactPage.vue'
+import AppContactPage from '../pages/AppContactPage.vue'
+import AppAboutmePage from '../pages/AppAboutmePage.vue'
+import AppCookiesPage from '@/pages/AppCookiesPage.vue'
+import AppPrivacyPage from '@/pages/AppPrivacyPage.vue'
+
 
 
 const routes = [
@@ -12,28 +16,23 @@ const routes = [
   {
     path: '/contact',
     name: 'Contact',
-    component: AppContact
-  }
-  // {
-  //   path: '/about-me',
-  //   name: 'AboutMe',
-  //   component: AppAboutme
-  // },
-  // {
-  //   path: '/cookies',
-  //   name: 'Cookies',
-  //   component: AppCookies
-  // },
-  // {
-  //   path: '/privacy',
-  //   name: 'Privacy',
-  //   component: AppPrivacy
-  // },
-  // {
-  //   path: '/timeline',
-  //   name: 'Timeline',
-  //   component: AppTimeline
-  // }
+    component: AppContactPage
+  },
+ {
+    path: '/about-me',
+     name: 'AboutMe',
+    component: AppAboutmePage
+   },
+   {
+     path: '/cookies',
+     name: 'Cookies',
+     component: AppCookiesPage
+   },
+   {
+     path: '/privacy',
+     name: 'Privacy',
+     component: AppPrivacyPage
+   }
 ]
 
 
