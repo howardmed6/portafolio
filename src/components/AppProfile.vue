@@ -95,7 +95,7 @@ export default {
     let autoplayInterval = null
 
     const certificates = ref([
-      { url: "../image/funcionesylistas.png", titulo: "LÓGICA DE PROGRAMACIÓN: EXPLORAR FUNCIONES Y LISTAS" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576927/logicadeprogramacion_adhfgh.png", titulo: "LÓGICA DE PROGRAMACIÓN: EXPLORAR FUNCIONES Y LISTAS" },
       { url: "../image/surmergeteenlaprogramaciònconjavascript.png", titulo: "LÓGICA DE PROGRAMACIÓN: SUMÉRGETE EN LA PROGRAMACIÓN CON JAVASCRIPT" },
       { url: "../image/amigosecreto.png", titulo: "PRACTICANDO LÓGICA DE PROGRAMACIÓN: CHALLENGE AMIGO SECRETO" },
       { url: "../image/htmlycssresponsividad.png", titulo: "HTML Y CSS: TRABAJANDO CON RESPONSIVIDAD Y PUBLICACIÓN DE PROYECTOS" },
