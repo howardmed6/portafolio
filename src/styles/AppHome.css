@@ -22,6 +22,8 @@ main {
     overflow: hidden;
 }
 
+/* ❌ FONDO DE ESTRELLAS (COMENTADO PARA DESACTIVAR ANIMACIONES) */
+/*
 .stars {
     position: fixed;
     top: 0;
@@ -49,6 +51,7 @@ main {
         transform: scale(1.2);
     }
 }
+*/
 
 .main-content {
     padding: 20px;
@@ -204,3 +207,4 @@ a:hover {
         margin: 10px 0;
     }
 }
+
