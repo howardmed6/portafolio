@@ -1,13 +1,13 @@
 {
   "routes": [
     {
-      "route": "/",
-      "redirect": "https://www.howardev.site",
+      "route": "http://howardev.site/*",
+      "redirect": "https://www.howardev.site$1",
       "statusCode": 301
     },
     {
-      "route": "http://*",
-      "redirect": "https://www.howardev.site",
+      "route": "https://howardev.site/*",
+      "redirect": "https://www.howardev.site$1",
       "statusCode": 301
     }
   ]
