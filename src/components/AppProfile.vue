@@ -1,79 +1,92 @@
-<!-- components/AppProfile.vue -->
+<!-- components/AppProjects.vue -->
 <template>
-  <div class="futuristic-profile-wrapper">
-    <!-- Sección del Perfil -->
-    <div class="futuristic-profile-card">
-      <div class="futuristic-profile-header">
-        <img src="/image/icon.svg" alt="Howard Medina Pineda" class="futuristic-profile-image">
-        <h1 class="futuristic-profile-name">Howard Medina Pineda</h1>
-      </div>
+  <section class="futuristic-projects-section">
+    <div class="futuristic-projects-container">
+      <h2 class="futuristic-section-title">Proyectos Destacados</h2>
 
-      <ul class="futuristic-profile-info">
-        <li class="futuristic-info-item">
-          <span class="futuristic-info-label">Edad:</span>
-          <span class="futuristic-info-value">21</span>
-        </li>
-        <li class="futuristic-info-item">
-          <span class="futuristic-info-label">Nacionalidad:</span>
-          <span class="futuristic-info-value">Colombia</span>
-        </li>
-        <li class="futuristic-info-item">
-          <span class="futuristic-info-label">Profesión:</span>
-          <div class="futuristic-info-value">
-            <div class="futuristic-profession-item">Tester QA Junior</div>
-            <div class="futuristic-profession-item">Full Stack Developer</div>
-            <div class="futuristic-profession-item">Aprendiz en Ingeniería en Sistemas</div>
-          </div>
-        </li>
-        <li class="futuristic-info-item">
-          <span class="futuristic-info-label">Nivel de inglés:</span>
-          <span class="futuristic-info-value">A2</span>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Sección del Carrusel de Certificados -->
-    <div class="futuristic-carousel-section">
-      <h2 class="futuristic-section-title">Certificados</h2>
       <div class="futuristic-carousel-container">
         <div class="futuristic-carousel-wrapper">
           <div
-            v-for="(certificate, index) in certificates"
+            v-for="(project, index) in projects"
             :key="index"
-            class="futuristic-slide"
+            class="futuristic-project-slide"
             :class="{ 'futuristic-active': currentSlide === index }"
+            @click="openProject(project.url)"
           >
-            <img
-              :src="certificate.url"
-              :alt="certificate.titulo"
-              @error="handleImageError"
-            >
-            <div class="futuristic-slide-title">{{ certificate.titulo }}</div>
+            <!-- Carousel de imágenes del proyecto -->
+            <div class="futuristic-project-images">
+              <div class="futuristic-image-container">
+                <div class="futuristic-images-wrapper">
+                  <img
+                    v-for="(image, imgIndex) in project.images"
+                    :key="imgIndex"
+                    :src="image"
+                    :alt="`${project.title} - Vista ${imgIndex + 1}`"
+                    class="futuristic-project-image"
+                    :class="{ 'active': project.currentImageIndex === imgIndex }"
+                    @error="handleImageError"
+                  >
+                </div>
+                
+                <!-- Indicadores de imágenes -->
+                <div class="futuristic-image-indicators" v-if="project.images.length > 1">
+                  <span
+                    v-for="(image, imgIndex) in project.images"
+                    :key="`img-indicator-${imgIndex}`"
+                    class="futuristic-image-indicator"
+                    :class="{ 'active': project.currentImageIndex === imgIndex }"
+                    @click.stop="changeProjectImage(index, imgIndex)"
+                  ></span>
+                </div>
+
+                <!-- Overlay de hover -->
+                <div class="futuristic-iframe-overlay">
+                  <span class="futuristic-visit-link">
+                    Visitar Proyecto
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Información del proyecto -->
+            <div class="futuristic-project-info">
+              <h3 class="futuristic-project-title">{{ project.title }}</h3>
+              <p class="futuristic-project-description">{{ project.description }}</p>
+              <div class="futuristic-project-tech">
+                <span
+                  v-for="tech in project.technologies"
+                  :key="tech"
+                  class="futuristic-tech-tag"
+                >
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Navegación -->
+        <!-- Navegación del carousel -->
         <div class="futuristic-navigation">
           <button
             @click="previousSlide"
             class="futuristic-nav-button"
-            aria-label="Imagen anterior"
+            aria-label="Proyecto anterior"
           >
             &#10094;
           </button>
           <button
             @click="nextSlide"
             class="futuristic-nav-button"
-            aria-label="Siguiente imagen"
+            aria-label="Siguiente proyecto"
           >
             &#10095;
           </button>
         </div>
 
-        <!-- Indicadores -->
+        <!-- Indicadores del carousel -->
         <div class="futuristic-indicators">
           <span
-            v-for="(certificate, index) in certificates"
+            v-for="(project, index) in projects"
             :key="`indicator-${index}`"
             class="futuristic-indicator"
             :class="{ 'futuristic-active': currentSlide === index }"
@@ -82,56 +95,83 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
 
 export default {
-  name: 'AppProfile',
+  name: 'AppProjects',
   setup() {
     const currentSlide = ref(0)
     let autoplayInterval = null
+    let imageAutoplayIntervals = {}
 
-    const certificates = ref([
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576927/logicadeprogramacion_adhfgh.png", titulo: "LÓGICA DE PROGRAMACIÓN: EXPLORAR FUNCIONES Y LISTAS" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576925/javascriptlogicadeprogramacion_dwwnov.png", titulo: "LÓGICA DE PROGRAMACIÓN: SUMÉRGETE EN LA PROGRAMACIÓN CON JAVASCRIPT" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576922/amigosecreto_d2wh0b.png", titulo: "PRACTICANDO LÓGICA DE PROGRAMACIÓN: CHALLENGE AMIGO SECRETO" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576919/htmlycssresponsividad_vpwwfh.png", titulo: "HTML Y CSS: TRABAJANDO CON RESPONSIVIDAD Y PUBLICACIÓN DE PROYECTOS" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576920/headerfooter_zqg5uh.png", titulo: "HTML Y CSS: HEADER, FOOTER Y VARIABLES CSS" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576920/htmlycssposicionamiento_okvx6v.png", titulo: "HTML Y CSS: CLASES, POSICIONAMIENTO Y FLEXBOX" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576922/htmlycssambientesdedesarrollo_melmj5.png", titulo: "HTML Y CSS: AMBIENTES DE DESARROLLO, ESTRUCTURA DE ARCHIVOS Y TAGS" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576919/gitygithubs_hrflzc.png", titulo: "GIT Y GITHUB: REPOSITORIO, COMMIT Y VERSIONES" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576924/chatgpt_aw8ezu.png", titulo: "CHATGPT: OPTIMIZANDO LA CALIDAD DE LOS RESULTADOS" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576923/chatgptprogramacion_kqwgsg.png", titulo: "CHATGPT Y PROGRAMACIÓN: AUMENTA TU PRODUCTIVIDAD" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576923/condicionalesjava_xfsjlq.png", titulo: " PRACTICANDO JAVA: CONDICIONALES CON IF/ELSE" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576921/creandomiaplicacion_c3zrms.png", titulo: "JAVA: CREANDO TU PRIMERA APLICACIÓN" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576922/fundamentosdeagilidad_mlbljj.png", titulo: "FUNDAMENTOS DE AGILIDAD: PRIMEROS PASOS PARA LA TRANSFORMACIÓN ÁGIL" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576925/ides_b8iggh.png", titulo: " HTML Y CSS: AMBIENTES DE DESARROLLO, ESTRUCTURA DE ARCHIVOS Y TAGS" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576926/posicionamientoyflexbos_ukmgwv.png", titulo: " HTML Y CSS: CLASES, POSICIONAMIENTO Y FLEXBOX" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576925/integraciondeunaaplicacion_g7y5mq.png", titulo: "SPRING AI: INTEGRA UNA APLICACIÓN CON OPENAI" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576926/javaapiarchivos_lixqn4.png", titulo: "  JAVA: CONSUMIR API, ESCRIBIR ARCHIVOS Y MANEJAR ERRORES" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576921/javalombandos_ayayww.png", titulo: "JAVA: TRABAJAR CON LISTAS Y COLECCIONES DE DATOS" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576921/javalombandos_ayayww.png", titulo: " JAVA: TRABAJANDO CON LAMBDAS, STREAMS Y SPRING FRAMEWORK" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576923/javapersistenciadedatosyconsultas_emi6sr.png", titulo: " JAVA: PERSISTENCIA DE DATOS Y CONSULTAS CON SPRING DATA JPA" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576924/javaporgramacionorientada_xnuulh.png", titulo: "JAVA: APLICANDO LA ORIENTACIÓN A OBJETOS" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576928/surmergeteenlaprogramaci%C3%B2nconjavascript_iohigg.png", titulo: "LÓGICA DE PROGRAMACIÓN: SUMÉRGETE EN LA PROGRAMACIÓN CON JAVASCRIPT" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576922/funcionesylistas_lgha5x.png", titulo: " LÓGICA DE PROGRAMACIÓN: EXPLORAR FUNCIONES Y LISTAS" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576926/practicandoconjava_rpukpl.png", titulo: "PRACTICANDO CON JAVA: CHALLENGE CONVERSOR DE MONEDAS" },
-
-
-
-
-
+    // Array de proyectos con imágenes (máximo 5 por proyecto)
+    const projects = ref([
+      {
+        url: 'https://www.rehistoria.com',
+        title: 'Rehistoria',
+        description: 'Plataforma web interactiva para explorar y compartir historias.',
+        technologies: ['Vue.js', 'Node.js', 'SupaBase'],
+        images: [
+          '/api/placeholder/600/300?text=Rehistoria-1',
+          '/api/placeholder/600/300?text=Rehistoria-2',
+          '/api/placeholder/600/300?text=Rehistoria-3',
+          '/api/placeholder/600/300?text=Rehistoria-4',
+          '/api/placeholder/600/300?text=Rehistoria-5'
+        ],
+        currentImageIndex: 0
+      },
+      {
+        url: 'https://www.corquark.com',
+        title: 'E-commerce App Form',
+        description: 'Aplicación de comercio y formatos.',
+        technologies: ['React', 'Firebase', 'React Native Móvil'],
+        images: [
+          '/api/placeholder/600/300?text=Corquark-1',
+          '/api/placeholder/600/300?text=Corquark-2',
+          '/api/placeholder/600/300?text=Corquark-3',
+          '/api/placeholder/600/300?text=Corquark-4'
+        ],
+        currentImageIndex: 0
+      },
+      {
+        url: 'https://sobrefrancia.com',
+        title: 'Sobre Francia, Viajes, Noticias',
+        description: 'Portal informativo sobre Francia con noticias y guías de viaje.',
+        technologies: ['Angular', 'D3.js', 'Express'],
+        images: [
+          '/api/placeholder/600/300?text=SobreFrancia-1',
+          '/api/placeholder/600/300?text=SobreFrancia-2',
+          '/api/placeholder/600/300?text=SobreFrancia-3',
+          '/api/placeholder/600/300?text=SobreFrancia-4',
+          '/api/placeholder/600/300?text=SobreFrancia-5'
+        ],
+        currentImageIndex: 0
+      },
+      {
+        url: 'https://www.teamgeneralizado.com',
+        title: 'Tienda Online Paraguaya',
+        description: 'Plataforma de e-commerce completa para el mercado paraguayo.',
+        technologies: ['Python', 'API REST Backend', 'PostgreSQL'],
+        images: [
+          '/api/placeholder/600/300?text=TeamGeneralizado-1',
+          '/api/placeholder/600/300?text=TeamGeneralizado-2',
+          '/api/placeholder/600/300?text=TeamGeneralizado-3'
+        ],
+        currentImageIndex: 0
+      }
     ])
 
+    // Navegación del carousel principal
     const nextSlide = () => {
-      currentSlide.value = (currentSlide.value + 1) % certificates.value.length
+      currentSlide.value = (currentSlide.value + 1) % projects.value.length
     }
 
     const previousSlide = () => {
-      currentSlide.value = (currentSlide.value - 1 + certificates.value.length) % certificates.value.length
+      currentSlide.value = (currentSlide.value - 1 + projects.value.length) % projects.value.length
     }
 
     const goToSlide = (index) => {
@@ -139,41 +179,80 @@ export default {
       pauseAutoplay()
     }
 
+    // Navegación de imágenes de proyecto
+    const changeProjectImage = (projectIndex, imageIndex) => {
+      projects.value[projectIndex].currentImageIndex = imageIndex
+    }
+
+    const nextProjectImage = (projectIndex) => {
+      const project = projects.value[projectIndex]
+      project.currentImageIndex = (project.currentImageIndex + 1) % project.images.length
+    }
+
+    // Abrir proyecto
+    const openProject = (url) => {
+      window.open(url, '_blank', 'noopener,noreferrer')
+    }
+
+    // Autoplay del carousel principal
     const startAutoplay = () => {
-      autoplayInterval = setInterval(nextSlide, 4000)
+      autoplayInterval = setInterval(nextSlide, 6000)
     }
 
     const pauseAutoplay = () => {
       if (autoplayInterval) {
         clearInterval(autoplayInterval)
-        setTimeout(startAutoplay, 6000)
+        setTimeout(startAutoplay, 8000)
       }
     }
 
+    // Autoplay de imágenes de cada proyecto
+    const startImageAutoplay = () => {
+      projects.value.forEach((project, index) => {
+        if (project.images.length > 1) {
+          imageAutoplayIntervals[index] = setInterval(() => {
+            nextProjectImage(index)
+          }, 3000)
+        }
+      })
+    }
+
+    const stopImageAutoplay = () => {
+      Object.values(imageAutoplayIntervals).forEach(interval => {
+        clearInterval(interval)
+      })
+      imageAutoplayIntervals = {}
+    }
+
+    // Manejo de errores de imagen
     const handleImageError = (event) => {
-      event.target.src = '/api/placeholder/800/450'
+      event.target.src = '/api/placeholder/600/300?text=Error-Loading-Image'
     }
 
     onMounted(() => {
       startAutoplay()
+      startImageAutoplay()
     })
 
     onUnmounted(() => {
       if (autoplayInterval) {
         clearInterval(autoplayInterval)
       }
+      stopImageAutoplay()
     })
 
     return {
-      certificates,
+      projects,
       currentSlide,
       nextSlide,
       previousSlide,
       goToSlide,
+      changeProjectImage,
+      openProject,
       handleImageError
     }
   }
 }
 </script>
 
-<style src="./AppProfile.css"></style>
+<style src="./AppProjects.css"></style>
