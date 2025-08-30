@@ -1,4 +1,8 @@
 {
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*", "/js/*", "/assets/*"]
+  },
   "routes": [
     {
       "route": "http://howardev.site/*",
@@ -10,5 +14,10 @@
       "redirect": "https://www.howardev.site$1",
       "statusCode": 301
     }
-  ]
+  ],
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html"
+    }
+  }
 }
