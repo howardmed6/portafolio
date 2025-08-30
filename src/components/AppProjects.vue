@@ -16,7 +16,7 @@
             class="futuristic-project-item"
             @click="openProject(project.url)"
           >
-            <!-- Carousel de imágenes reemplazando iframe -->
+            <!-- Carousel de imágenes -->
             <div class="futuristic-iframe-container">
               <div class="futuristic-images-wrapper">
                 <img
@@ -37,7 +37,7 @@
                   :key="`img-indicator-${imgIndex}`"
                   class="futuristic-image-indicator"
                   :class="{ 'active': project.currentImageIndex === imgIndex }"
-                  @click.stop="changeProjectImage(project, imgIndex)"
+                  @click.stop="changeProjectImage(pairIndex * 2 + index, imgIndex)"
                 ></span>
               </div>
 
@@ -69,14 +69,12 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed } from 'vue'
 
 export default {
   name: 'AppProjects',
   setup() {
-    let imageAutoplayIntervals = {}
-
-    // Array de proyectos - Aquí puedes agregar más proyectos
+    // Array de proyectos - Aquí pones tus URLs de Cloudinary
     const projects = ref([
       {
         url: 'https://www.rehistoria.com',
@@ -84,11 +82,9 @@ export default {
         description: 'Plataforma web interactiva para explorar y compartir historias.',
         technologies: ['Vue.js', 'Node.js', 'SupaBase'],
         images: [
-          '/api/placeholder/600/250?text=Rehistoria-1',
-          '/api/placeholder/600/250?text=Rehistoria-2',
-          '/api/placeholder/600/250?text=Rehistoria-3',
-          '/api/placeholder/600/250?text=Rehistoria-4',
-          '/api/placeholder/600/250?text=Rehistoria-5'
+          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/rehistoria-1.jpg',
+          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/rehistoria-2.jpg',
+          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/rehistoria-3.jpg'
         ],
         currentImageIndex: 0
       },
@@ -98,10 +94,8 @@ export default {
         description: 'Aplicación de comercio y formatos.',
         technologies: ['React', 'Firebase', 'React Native Móvil'],
         images: [
-          '/api/placeholder/600/250?text=Corquark-1',
-          '/api/placeholder/600/250?text=Corquark-2',
-          '/api/placeholder/600/250?text=Corquark-3',
-          '/api/placeholder/600/250?text=Corquark-4'
+          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/corquark-1.jpg',
+          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/corquark-2.jpg'
         ],
         currentImageIndex: 0
       },
@@ -111,11 +105,9 @@ export default {
         description: 'Portal informativo sobre Francia con noticias y guías de viaje.',
         technologies: ['Angular', 'D3.js', 'Express'],
         images: [
-          '/api/placeholder/600/250?text=SobreFrancia-1',
-          '/api/placeholder/600/250?text=SobreFrancia-2',
-          '/api/placeholder/600/250?text=SobreFrancia-3',
-          '/api/placeholder/600/250?text=SobreFrancia-4',
-          '/api/placeholder/600/250?text=SobreFrancia-5'
+          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/francia-1.jpg',
+          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/francia-2.jpg',
+          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/francia-3.jpg'
         ],
         currentImageIndex: 0
       },
@@ -125,15 +117,14 @@ export default {
         description: 'Plataforma de e-commerce completa para el mercado paraguayo.',
         technologies: ['Python', 'API REST Backend', 'PostgreSQL'],
         images: [
-          '/api/placeholder/600/250?text=TeamGeneralizado-1',
-          '/api/placeholder/600/250?text=TeamGeneralizado-2',
-          '/api/placeholder/600/250?text=TeamGeneralizado-3'
+          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/team-1.jpg',
+          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/team-2.jpg'
         ],
         currentImageIndex: 0
       }
     ])
 
-    // Computed para agrupar proyectos de dos en dos (mantiene tu layout original)
+    // Computed para agrupar proyectos de dos en dos
     const projectPairs = computed(() => {
       const pairs = []
       for (let i = 0; i < projects.value.length; i += 2) {
@@ -142,14 +133,11 @@ export default {
       return pairs
     })
 
-    // Cambiar imagen de un proyecto específico
-    const changeProjectImage = (project, imageIndex) => {
-      project.currentImageIndex = imageIndex
-    }
-
-    // Avanzar imagen automáticamente para un proyecto
-    const nextProjectImage = (project) => {
-      project.currentImageIndex = (project.currentImageIndex + 1) % project.images.length
+    // Cambiar imagen de un proyecto específico SIN AUTOPLAY
+    const changeProjectImage = (projectIndex, imageIndex) => {
+      if (projects.value[projectIndex]) {
+        projects.value[projectIndex].currentImageIndex = imageIndex
+      }
     }
 
     // Abrir proyecto
@@ -157,52 +145,17 @@ export default {
       window.open(url, '_blank', 'noopener,noreferrer')
     }
 
-    // Autoplay de imágenes para cada proyecto individual
-    const startImageAutoplay = () => {
-      projects.value.forEach((project, index) => {
-        if (project.images.length > 1) {
-          imageAutoplayIntervals[index] = setInterval(() => {
-            nextProjectImage(project)
-          }, 3000) // Cambia cada 3 segundos
-        }
-      })
-    }
-
-    const stopImageAutoplay = () => {
-      Object.values(imageAutoplayIntervals).forEach(interval => {
-        clearInterval(interval)
-      })
-      imageAutoplayIntervals = {}
-    }
-
-    // Manejo de errores de imagen
+    // Manejo de errores de imagen con imagen por defecto
     const handleImageError = (event) => {
-      event.target.src = '/api/placeholder/600/250?text=Error-Loading-Image'
+      event.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjI1MCIgdmlld0JveD0iMCAwIDYwMCAyNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMjUwIiBmaWxsPSIjMUEyMzM5Ii8+Cjx0ZXh0IHg9IjMwMCIgeT0iMTI1IiBmaWxsPSIjNjM3Mzg4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCI+SW1hZ2VuIG5vIGRpc3BvbmlibGU8L3RleHQ+Cjwvc3ZnPg=='
     }
-
-    // Método para agregar más proyectos dinámicamente (mantiene tu funcionalidad original)
-    const addProject = (project) => {
-      projects.value.push({
-        ...project,
-        currentImageIndex: 0
-      })
-    }
-
-    onMounted(() => {
-      startImageAutoplay()
-    })
-
-    onUnmounted(() => {
-      stopImageAutoplay()
-    })
 
     return {
       projects,
       projectPairs,
       changeProjectImage,
       openProject,
-      handleImageError,
-      addProject
+      handleImageError
     }
   }
 }
