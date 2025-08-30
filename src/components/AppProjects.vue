@@ -64,30 +64,30 @@ export default {
   setup() {
     // Array de proyectos - Aquí puedes agregar más proyectos
     const projects = ref([
-      // {
-      //   url: 'https://www.rehistoria.com',
-      //   title: 'Rehistoria',
-      //   description: 'Plataforma web interactiva para explorar y compartir historias.',
-      //   technologies: ['Vue.js', 'Node.js', 'SupaBase']
-      // },
-      // {
-      //   url: 'https://www.corquark.com',
-      //   title: 'E-commerce App Form',
-      //   description: 'Aplicación de comercio y formatos.',
-      //   technologies: ['React', 'Firebase', 'Reac Native Movil']
-      // },
-      // {
-      //   url: 'https://sobrefrancia.com',
-      //   title: 'Sobre Francia, Viajes, Noticias',
-      //   description: 'Panel de control para análisis de datos en tiempo real.',
-      //   technologies: ['Angular', 'D3.js', 'Express']
-      // },
-      // {
-      //   url: 'https://www.teamgeneralizado.com',
-      //   title: 'Tienda Online paraguaya',
-      //   description: 'API robusta para gestión de usuarios y autenticación.',
-      //   technologies: ['Python', 'API REST Backend', 'API REST Backend']
-      // }
+       {
+         url: 'https://www.rehistoria.com',
+         title: 'Rehistoria',
+         description: 'Plataforma web interactiva para explorar y compartir historias.',
+         technologies: ['Vue.js', 'Node.js', 'SupaBase']
+       },
+       {
+         url: 'https://www.corquark.com',
+         title: 'E-commerce App Form',
+         description: 'Aplicación de comercio y formatos.',
+         technologies: ['React', 'Firebase', 'Reac Native Movil']
+       },
+       {
+         url: 'https://sobrefrancia.com',
+         title: 'Sobre Francia, Viajes, Noticias',
+         description: 'Panel de control para análisis de datos en tiempo real.',
+         technologies: ['Angular', 'D3.js', 'Express']
+       },
+       {
+         url: 'https://www.teamgeneralizado.com',
+         title: 'Tienda Online paraguaya',
+         description: 'API robusta para gestión de usuarios y autenticación.',
+         technologies: ['Python', 'API REST Backend', 'API REST Backend']
+       }
     ])
 
     // Computed para agrupar proyectos de dos en dos
