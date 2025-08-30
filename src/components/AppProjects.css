@@ -1,304 +1,258 @@
-/* AppProjects.css - Estilos futuristas para proyectos */
+<!-- components/AppProjects.vue -->
+<template>
+  <section class="futuristic-projects-section">
+    <div class="futuristic-projects-container">
+      <h2 class="futuristic-section-title">Proyectos Destacados</h2>
 
-.futuristic-projects-section {
-  padding: 40px 0;
-  min-height: calc(100vh - 200px);
-}
+      <div class="futuristic-carousel-container">
+        <div class="futuristic-carousel-wrapper">
+          <div
+            v-for="(project, index) in projects"
+            :key="index"
+            class="futuristic-project-slide"
+            :class="{ 'futuristic-active': currentSlide === index }"
+            @click="openProject(project.url)"
+          >
+            <!-- Carousel de imágenes del proyecto -->
+            <div class="futuristic-project-images">
+              <div class="futuristic-image-container">
+                <div class="futuristic-images-wrapper">
+                  <img
+                    v-for="(image, imgIndex) in project.images"
+                    :key="imgIndex"
+                    :src="image"
+                    :alt="`${project.title} - Vista ${imgIndex + 1}`"
+                    class="futuristic-project-image"
+                    :class="{ 'active': project.currentImageIndex === imgIndex }"
+                    @error="handleImageError"
+                  >
+                </div>
+                
+                <!-- Indicadores de imágenes -->
+                <div class="futuristic-image-indicators" v-if="project.images.length > 1">
+                  <span
+                    v-for="(image, imgIndex) in project.images"
+                    :key="`img-indicator-${imgIndex}`"
+                    class="futuristic-image-indicator"
+                    :class="{ 'active': project.currentImageIndex === imgIndex }"
+                    @click.stop="changeProjectImage(index, imgIndex)"
+                  ></span>
+                </div>
 
-.futuristic-projects-container {
-  max-width: 1200px;
-  margin: 60px auto 100px;
-  padding: 30px;
-  background: rgba(26, 26, 46, 0.6);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
-              0 0 20px rgba(0, 255, 255, 0.1);
-  transition: all 0.3s ease;
-}
+                <!-- Overlay de hover -->
+                <div class="futuristic-iframe-overlay">
+                  <span class="futuristic-visit-link">
+                    Visitar Proyecto
+                  </span>
+                </div>
+              </div>
+            </div>
 
-.futuristic-projects-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4),
-              0 0 30px rgba(0, 255, 255, 0.15);
-}
+            <!-- Información del proyecto -->
+            <div class="futuristic-project-info">
+              <h3 class="futuristic-project-title">{{ project.title }}</h3>
+              <p class="futuristic-project-description">{{ project.description }}</p>
+              <div class="futuristic-project-tech">
+                <span
+                  v-for="tech in project.technologies"
+                  :key="tech"
+                  class="futuristic-tech-tag"
+                >
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-.futuristic-section-title {
-  color: #00d4aa;
-  text-shadow: 0 0 10px rgba(0, 212, 170, 0.5),
-               0 0 20px rgba(0, 212, 170, 0.3);
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2rem;
-  font-weight: 600;
-  padding-bottom: 15px;
-  border-bottom: 2px solid rgba(0, 255, 255, 0.3);
-}
+        <!-- Navegación del carousel -->
+        <div class="futuristic-navigation">
+          <button
+            @click="previousSlide"
+            class="futuristic-nav-button"
+            aria-label="Proyecto anterior"
+          >
+            &#10094;
+          </button>
+          <button
+            @click="nextSlide"
+            class="futuristic-nav-button"
+            aria-label="Siguiente proyecto"
+          >
+            &#10095;
+          </button>
+        </div>
 
-.futuristic-projects-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
+        <!-- Indicadores del carousel -->
+        <div class="futuristic-indicators">
+          <span
+            v-for="(project, index) in projects"
+            :key="`indicator-${index}`"
+            class="futuristic-indicator"
+            :class="{ 'futuristic-active': currentSlide === index }"
+            @click="goToSlide(index)"
+          ></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
 
-.futuristic-project-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
-  transition: all 0.3s ease;
-}
+<script>
+import { ref, onMounted, onUnmounted } from 'vue'
 
-.futuristic-project-item {
-  background: rgba(26, 26, 46, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 255, 255, 0.15);
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3),
-              0 0 15px rgba(0, 212, 170, 0.1);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
+export default {
+  name: 'AppProjects',
+  setup() {
+    const currentSlide = ref(0)
+    let autoplayInterval = null
+    let imageAutoplayIntervals = {}
 
-.futuristic-project-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #00d4aa, transparent);
-  animation: projectGlow 4s linear infinite;
-}
+    // Array de proyectos con imágenes (máximo 5 por proyecto)
+    const projects = ref([
+      {
+        url: 'https://www.rehistoria.com',
+        title: 'Rehistoria',
+        description: 'Plataforma web interactiva para explorar y compartir historias.',
+        technologies: ['Vue.js', 'Node.js', 'SupaBase'],
+        images: [
+          '/api/placeholder/600/300?text=Rehistoria-1',
+          '/api/placeholder/600/300?text=Rehistoria-2',
+          '/api/placeholder/600/300?text=Rehistoria-3',
+          '/api/placeholder/600/300?text=Rehistoria-4',
+          '/api/placeholder/600/300?text=Rehistoria-5'
+        ],
+        currentImageIndex: 0
+      },
+      {
+        url: 'https://www.corquark.com',
+        title: 'E-commerce App Form',
+        description: 'Aplicación de comercio y formatos.',
+        technologies: ['React', 'Firebase', 'React Native Móvil'],
+        images: [
+          '/api/placeholder/600/300?text=Corquark-1',
+          '/api/placeholder/600/300?text=Corquark-2',
+          '/api/placeholder/600/300?text=Corquark-3',
+          '/api/placeholder/600/300?text=Corquark-4'
+        ],
+        currentImageIndex: 0
+      },
+      {
+        url: 'https://sobrefrancia.com',
+        title: 'Sobre Francia, Viajes, Noticias',
+        description: 'Portal informativo sobre Francia con noticias y guías de viaje.',
+        technologies: ['Angular', 'D3.js', 'Express'],
+        images: [
+          '/api/placeholder/600/300?text=SobreFrancia-1',
+          '/api/placeholder/600/300?text=SobreFrancia-2',
+          '/api/placeholder/600/300?text=SobreFrancia-3',
+          '/api/placeholder/600/300?text=SobreFrancia-4',
+          '/api/placeholder/600/300?text=SobreFrancia-5'
+        ],
+        currentImageIndex: 0
+      },
+      {
+        url: 'https://www.teamgeneralizado.com',
+        title: 'Tienda Online Paraguaya',
+        description: 'Plataforma de e-commerce completa para el mercado paraguayo.',
+        technologies: ['Python', 'API REST Backend', 'PostgreSQL'],
+        images: [
+          '/api/placeholder/600/300?text=TeamGeneralizado-1',
+          '/api/placeholder/600/300?text=TeamGeneralizado-2',
+          '/api/placeholder/600/300?text=TeamGeneralizado-3'
+        ],
+        currentImageIndex: 0
+      }
+    ])
 
-.futuristic-project-item:nth-child(even)::before {
-  animation-delay: 2s;
-}
+    // Navegación del carousel principal
+    const nextSlide = () => {
+      currentSlide.value = (currentSlide.value + 1) % projects.value.length
+    }
 
-@keyframes projectGlow {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
+    const previousSlide = () => {
+      currentSlide.value = (currentSlide.value - 1 + projects.value.length) % projects.value.length
+    }
 
-.futuristic-project-item:hover {
-  transform: translateY(-8px);
-  border-color: rgba(0, 255, 255, 0.4);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4),
-              0 0 25px rgba(0, 212, 170, 0.2);
-}
+    const goToSlide = (index) => {
+      currentSlide.value = index
+      pauseAutoplay()
+    }
 
-/* === IFRAME CONTAINER === */
-.futuristic-iframe-container {
-  position: relative;
-  width: 100%;
-  height: 250px;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  border: 2px solid rgba(0, 255, 255, 0.2);
-  transition: all 0.3s ease;
-}
+    // Navegación de imágenes de proyecto
+    const changeProjectImage = (projectIndex, imageIndex) => {
+      projects.value[projectIndex].currentImageIndex = imageIndex
+    }
 
-.futuristic-iframe-container:hover {
-  border-color: rgba(0, 255, 255, 0.5);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-}
+    const nextProjectImage = (projectIndex) => {
+      const project = projects.value[projectIndex]
+      project.currentImageIndex = (project.currentImageIndex + 1) % project.images.length
+    }
 
-.futuristic-project-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
+    // Abrir proyecto
+    const openProject = (url) => {
+      window.open(url, '_blank', 'noopener,noreferrer')
+    }
 
-.futuristic-iframe-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-}
+    // Autoplay del carousel principal
+    const startAutoplay = () => {
+      autoplayInterval = setInterval(nextSlide, 6000)
+    }
 
-.futuristic-iframe-container:hover .futuristic-iframe-overlay {
-  opacity: 1;
-}
+    const pauseAutoplay = () => {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval)
+        setTimeout(startAutoplay, 8000)
+      }
+    }
 
-.futuristic-visit-link {
-  background: linear-gradient(135deg,
-              rgba(0, 212, 170, 0.9),
-              rgba(0, 255, 255, 0.9));
-  color: white;
-  padding: 12px 25px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  border: 2px solid rgba(0, 255, 255, 0.3);
-  transition: all 0.3s ease;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 5px 15px rgba(0, 212, 170, 0.4);
-}
+    // Autoplay de imágenes de cada proyecto
+    const startImageAutoplay = () => {
+      projects.value.forEach((project, index) => {
+        if (project.images.length > 1) {
+          imageAutoplayIntervals[index] = setInterval(() => {
+            nextProjectImage(index)
+          }, 3000)
+        }
+      })
+    }
 
-.futuristic-visit-link:hover {
-  background: linear-gradient(135deg,
-              rgba(0, 255, 255, 0.9),
-              rgba(0, 212, 170, 0.9));
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5);
-  border-color: #00d4aa;
-}
+    const stopImageAutoplay = () => {
+      Object.values(imageAutoplayIntervals).forEach(interval => {
+        clearInterval(interval)
+      })
+      imageAutoplayIntervals = {}
+    }
 
-/* === PROJECT INFO === */
-.futuristic-project-info {
-  text-align: left;
-}
+    // Manejo de errores de imagen
+    const handleImageError = (event) => {
+      event.target.src = '/api/placeholder/600/300?text=Error-Loading-Image'
+    }
 
-.futuristic-project-title {
-  color: #00d4aa;
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  text-shadow: 0 0 10px rgba(0, 212, 170, 0.5);
-  transition: all 0.3s ease;
-}
+    onMounted(() => {
+      startAutoplay()
+      startImageAutoplay()
+    })
 
-.futuristic-project-item:hover .futuristic-project-title {
-  color: #00ffff;
-  text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
-}
+    onUnmounted(() => {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval)
+      }
+      stopImageAutoplay()
+    })
 
-.futuristic-project-description {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  text-shadow: 0 0 3px rgba(255, 255, 255, 0.1);
-}
-
-.futuristic-project-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 15px;
-}
-
-.futuristic-tech-tag {
-  background: rgba(0, 212, 170, 0.2);
-  border: 1px solid rgba(0, 212, 170, 0.4);
-  color: #00d4aa;
-  padding: 5px 12px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  text-shadow: 0 0 5px rgba(0, 212, 170, 0.3);
-}
-
-.futuristic-tech-tag:hover {
-  background: rgba(0, 212, 170, 0.3);
-  border-color: rgba(0, 212, 170, 0.6);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
-}
-
-/* === RESPONSIVE === */
-@media (max-width: 1024px) {
-  .futuristic-projects-container {
-    margin: 40px auto 80px;
-    padding: 25px;
-  }
-
-  .futuristic-iframe-container {
-    height: 220px;
-  }
-}
-
-@media (max-width: 768px) {
-  .futuristic-project-pair {
-    grid-template-columns: 1fr; /* Una columna en móvil */
-    gap: 20px;
-  }
-
-  .futuristic-projects-container {
-    padding: 20px;
-    margin: 30px auto 60px;
-  }
-
-  .futuristic-section-title {
-    font-size: 1.6rem;
-  }
-
-  .futuristic-project-item {
-    padding: 15px;
-  }
-
-  .futuristic-iframe-container {
-    height: 200px;
-  }
-
-  .futuristic-project-title {
-    font-size: 1.2rem;
-  }
-
-  .futuristic-project-description {
-    font-size: 0.9rem;
-  }
-
-  .futuristic-tech-tag {
-    font-size: 0.75rem;
-    padding: 4px 10px;
+    return {
+      projects,
+      currentSlide,
+      nextSlide,
+      previousSlide,
+      goToSlide,
+      changeProjectImage,
+      openProject,
+      handleImageError
+    }
   }
 }
+</script>
 
-@media (max-width: 480px) {
-  .futuristic-projects-container {
-    margin: 20px auto 40px;
-    padding: 15px;
-  }
-
-  .futuristic-iframe-container {
-    height: 180px;
-  }
-
-  .futuristic-visit-link {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-
-  .futuristic-project-tech {
-    gap: 6px;
-  }
-}
-
-/* === ANIMACIONES DE ENTRADA === */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.futuristic-project-item {
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.futuristic-project-pair:nth-child(1) .futuristic-project-item:nth-child(1) { animation-delay: 0.1s; }
-.futuristic-project-pair:nth-child(1) .futuristic-project-item:nth-child(2) { animation-delay: 0.2s; }
-.futuristic-project-pair:nth-child(2) .futuristic-project-item:nth-child(1) { animation-delay: 0.3s; }
-.futuristic-project-pair:nth-child(2) .futuristic-project-item:nth-child(2) { animation-delay: 0.4s; }
+<style src="./AppProjects.css"></style>
