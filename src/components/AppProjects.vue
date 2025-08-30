@@ -15,6 +15,8 @@
             :key="`project-${pairIndex}-${index}`"
             class="futuristic-project-item"
             @click="openProject(project.url)"
+            @mouseenter="pauseOnHover"
+            @mouseleave="resumeOnLeave"
           >
             <!-- Carousel de imágenes -->
             <div class="futuristic-iframe-container">
@@ -69,11 +71,15 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 export default {
   name: 'AppProjects',
   setup() {
+    const isVisible = ref(true)
+    const isHovered = ref(false)
+    let autoplayTimer = null
+
     // Array de proyectos - Aquí pones tus URLs de Cloudinary
     const projects = ref([
       {
@@ -133,29 +139,85 @@ export default {
       return pairs
     })
 
-    // Cambiar imagen de un proyecto específico SIN AUTOPLAY
+    // Cambiar imagen manual
     const changeProjectImage = (projectIndex, imageIndex) => {
       if (projects.value[projectIndex]) {
         projects.value[projectIndex].currentImageIndex = imageIndex
       }
     }
 
-    // Abrir proyecto
+    // Autoplay optimizado - solo UNA función para todos los proyectos
+    const startAutoplay = () => {
+      if (autoplayTimer) return // Evita múltiples timers
+      
+      autoplayTimer = setInterval(() => {
+        // Solo funciona si está visible y no hay hover
+        if (!isVisible.value || isHovered.value) return
+
+        projects.value.forEach(project => {
+          if (project.images.length > 1) {
+            project.currentImageIndex = (project.currentImageIndex + 1) % project.images.length
+          }
+        })
+      }, 4000) // 4 segundos por imagen
+    }
+
+    const stopAutoplay = () => {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer)
+        autoplayTimer = null
+      }
+    }
+
+    // Detectar visibilidad de página
+    const handleVisibilityChange = () => {
+      isVisible.value = !document.hidden
+      if (isVisible.value) {
+        startAutoplay()
+      } else {
+        stopAutoplay()
+      }
+    }
+
+    // Pausar en hover
+    const pauseOnHover = () => {
+      isHovered.value = true
+    }
+
+    const resumeOnLeave = () => {
+      isHovered.value = false
+    }
+
     const openProject = (url) => {
       window.open(url, '_blank', 'noopener,noreferrer')
     }
 
-    // Manejo de errores de imagen con imagen por defecto
     const handleImageError = (event) => {
       event.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjI1MCIgdmlld0JveD0iMCAwIDYwMCAyNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMjUwIiBmaWxsPSIjMUEyMzM5Ii8+Cjx0ZXh0IHg9IjMwMCIgeT0iMTI1IiBmaWxsPSIjNjM3Mzg4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCI+SW1hZ2VuIG5vIGRpc3BvbmlibGU8L3RleHQ+Cjwvc3ZnPg=='
     }
+
+    onMounted(() => {
+      // Iniciar autoplay
+      startAutoplay()
+      
+      // Escuchar cambios de visibilidad de página
+      document.addEventListener('visibilitychange', handleVisibilityChange)
+    })
+
+    onUnmounted(() => {
+      // Limpiar todo al desmontar
+      stopAutoplay()
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    })
 
     return {
       projects,
       projectPairs,
       changeProjectImage,
       openProject,
-      handleImageError
+      handleImageError,
+      pauseOnHover,
+      resumeOnLeave
     }
   }
 }
