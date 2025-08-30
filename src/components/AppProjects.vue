@@ -4,51 +4,50 @@
     <div class="futuristic-projects-container">
       <h2 class="futuristic-section-title">Proyectos Destacados</h2>
 
-      <div class="futuristic-carousel-container">
-        <div class="futuristic-carousel-wrapper">
+      <div class="futuristic-projects-grid">
+        <div
+          v-for="(pair, pairIndex) in projectPairs"
+          :key="`pair-${pairIndex}`"
+          class="futuristic-project-pair"
+        >
           <div
-            v-for="(project, index) in projects"
-            :key="index"
-            class="futuristic-project-slide"
-            :class="{ 'futuristic-active': currentSlide === index }"
+            v-for="(project, index) in pair"
+            :key="`project-${pairIndex}-${index}`"
+            class="futuristic-project-item"
             @click="openProject(project.url)"
           >
-            <!-- Carousel de imágenes del proyecto -->
-            <div class="futuristic-project-images">
-              <div class="futuristic-image-container">
-                <div class="futuristic-images-wrapper">
-                  <img
-                    v-for="(image, imgIndex) in project.images"
-                    :key="imgIndex"
-                    :src="image"
-                    :alt="`${project.title} - Vista ${imgIndex + 1}`"
-                    class="futuristic-project-image"
-                    :class="{ 'active': project.currentImageIndex === imgIndex }"
-                    @error="handleImageError"
-                  >
-                </div>
-                
-                <!-- Indicadores de imágenes -->
-                <div class="futuristic-image-indicators" v-if="project.images.length > 1">
-                  <span
-                    v-for="(image, imgIndex) in project.images"
-                    :key="`img-indicator-${imgIndex}`"
-                    class="futuristic-image-indicator"
-                    :class="{ 'active': project.currentImageIndex === imgIndex }"
-                    @click.stop="changeProjectImage(index, imgIndex)"
-                  ></span>
-                </div>
+            <!-- Carousel de imágenes reemplazando iframe -->
+            <div class="futuristic-iframe-container">
+              <div class="futuristic-images-wrapper">
+                <img
+                  v-for="(image, imgIndex) in project.images"
+                  :key="imgIndex"
+                  :src="image"
+                  :alt="`${project.title} - Vista ${imgIndex + 1}`"
+                  class="futuristic-project-iframe"
+                  :class="{ 'active': project.currentImageIndex === imgIndex }"
+                  @error="handleImageError"
+                >
+              </div>
+              
+              <!-- Indicadores de imágenes (solo si hay más de 1) -->
+              <div class="futuristic-image-indicators" v-if="project.images.length > 1">
+                <span
+                  v-for="(image, imgIndex) in project.images"
+                  :key="`img-indicator-${imgIndex}`"
+                  class="futuristic-image-indicator"
+                  :class="{ 'active': project.currentImageIndex === imgIndex }"
+                  @click.stop="changeProjectImage(project, imgIndex)"
+                ></span>
+              </div>
 
-                <!-- Overlay de hover -->
-                <div class="futuristic-iframe-overlay">
-                  <span class="futuristic-visit-link">
-                    Visitar Proyecto
-                  </span>
-                </div>
+              <div class="futuristic-iframe-overlay">
+                <span class="futuristic-visit-link">
+                  Visitar Proyecto
+                </span>
               </div>
             </div>
 
-            <!-- Información del proyecto -->
             <div class="futuristic-project-info">
               <h3 class="futuristic-project-title">{{ project.title }}</h3>
               <p class="futuristic-project-description">{{ project.description }}</p>
@@ -64,51 +63,20 @@
             </div>
           </div>
         </div>
-
-        <!-- Navegación del carousel -->
-        <div class="futuristic-navigation">
-          <button
-            @click="previousSlide"
-            class="futuristic-nav-button"
-            aria-label="Proyecto anterior"
-          >
-            &#10094;
-          </button>
-          <button
-            @click="nextSlide"
-            class="futuristic-nav-button"
-            aria-label="Siguiente proyecto"
-          >
-            &#10095;
-          </button>
-        </div>
-
-        <!-- Indicadores del carousel -->
-        <div class="futuristic-indicators">
-          <span
-            v-for="(project, index) in projects"
-            :key="`indicator-${index}`"
-            class="futuristic-indicator"
-            :class="{ 'futuristic-active': currentSlide === index }"
-            @click="goToSlide(index)"
-          ></span>
-        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 export default {
   name: 'AppProjects',
   setup() {
-    const currentSlide = ref(0)
-    let autoplayInterval = null
     let imageAutoplayIntervals = {}
 
-    // Array de proyectos con imágenes (máximo 5 por proyecto)
+    // Array de proyectos - Aquí puedes agregar más proyectos
     const projects = ref([
       {
         url: 'https://www.rehistoria.com',
@@ -116,11 +84,11 @@ export default {
         description: 'Plataforma web interactiva para explorar y compartir historias.',
         technologies: ['Vue.js', 'Node.js', 'SupaBase'],
         images: [
-          '/api/placeholder/600/300?text=Rehistoria-1',
-          '/api/placeholder/600/300?text=Rehistoria-2',
-          '/api/placeholder/600/300?text=Rehistoria-3',
-          '/api/placeholder/600/300?text=Rehistoria-4',
-          '/api/placeholder/600/300?text=Rehistoria-5'
+          '/api/placeholder/600/250?text=Rehistoria-1',
+          '/api/placeholder/600/250?text=Rehistoria-2',
+          '/api/placeholder/600/250?text=Rehistoria-3',
+          '/api/placeholder/600/250?text=Rehistoria-4',
+          '/api/placeholder/600/250?text=Rehistoria-5'
         ],
         currentImageIndex: 0
       },
@@ -130,10 +98,10 @@ export default {
         description: 'Aplicación de comercio y formatos.',
         technologies: ['React', 'Firebase', 'React Native Móvil'],
         images: [
-          '/api/placeholder/600/300?text=Corquark-1',
-          '/api/placeholder/600/300?text=Corquark-2',
-          '/api/placeholder/600/300?text=Corquark-3',
-          '/api/placeholder/600/300?text=Corquark-4'
+          '/api/placeholder/600/250?text=Corquark-1',
+          '/api/placeholder/600/250?text=Corquark-2',
+          '/api/placeholder/600/250?text=Corquark-3',
+          '/api/placeholder/600/250?text=Corquark-4'
         ],
         currentImageIndex: 0
       },
@@ -143,11 +111,11 @@ export default {
         description: 'Portal informativo sobre Francia con noticias y guías de viaje.',
         technologies: ['Angular', 'D3.js', 'Express'],
         images: [
-          '/api/placeholder/600/300?text=SobreFrancia-1',
-          '/api/placeholder/600/300?text=SobreFrancia-2',
-          '/api/placeholder/600/300?text=SobreFrancia-3',
-          '/api/placeholder/600/300?text=SobreFrancia-4',
-          '/api/placeholder/600/300?text=SobreFrancia-5'
+          '/api/placeholder/600/250?text=SobreFrancia-1',
+          '/api/placeholder/600/250?text=SobreFrancia-2',
+          '/api/placeholder/600/250?text=SobreFrancia-3',
+          '/api/placeholder/600/250?text=SobreFrancia-4',
+          '/api/placeholder/600/250?text=SobreFrancia-5'
         ],
         currentImageIndex: 0
       },
@@ -157,35 +125,30 @@ export default {
         description: 'Plataforma de e-commerce completa para el mercado paraguayo.',
         technologies: ['Python', 'API REST Backend', 'PostgreSQL'],
         images: [
-          '/api/placeholder/600/300?text=TeamGeneralizado-1',
-          '/api/placeholder/600/300?text=TeamGeneralizado-2',
-          '/api/placeholder/600/300?text=TeamGeneralizado-3'
+          '/api/placeholder/600/250?text=TeamGeneralizado-1',
+          '/api/placeholder/600/250?text=TeamGeneralizado-2',
+          '/api/placeholder/600/250?text=TeamGeneralizado-3'
         ],
         currentImageIndex: 0
       }
     ])
 
-    // Navegación del carousel principal
-    const nextSlide = () => {
-      currentSlide.value = (currentSlide.value + 1) % projects.value.length
+    // Computed para agrupar proyectos de dos en dos (mantiene tu layout original)
+    const projectPairs = computed(() => {
+      const pairs = []
+      for (let i = 0; i < projects.value.length; i += 2) {
+        pairs.push(projects.value.slice(i, i + 2))
+      }
+      return pairs
+    })
+
+    // Cambiar imagen de un proyecto específico
+    const changeProjectImage = (project, imageIndex) => {
+      project.currentImageIndex = imageIndex
     }
 
-    const previousSlide = () => {
-      currentSlide.value = (currentSlide.value - 1 + projects.value.length) % projects.value.length
-    }
-
-    const goToSlide = (index) => {
-      currentSlide.value = index
-      pauseAutoplay()
-    }
-
-    // Navegación de imágenes de proyecto
-    const changeProjectImage = (projectIndex, imageIndex) => {
-      projects.value[projectIndex].currentImageIndex = imageIndex
-    }
-
-    const nextProjectImage = (projectIndex) => {
-      const project = projects.value[projectIndex]
+    // Avanzar imagen automáticamente para un proyecto
+    const nextProjectImage = (project) => {
       project.currentImageIndex = (project.currentImageIndex + 1) % project.images.length
     }
 
@@ -194,25 +157,13 @@ export default {
       window.open(url, '_blank', 'noopener,noreferrer')
     }
 
-    // Autoplay del carousel principal
-    const startAutoplay = () => {
-      autoplayInterval = setInterval(nextSlide, 6000)
-    }
-
-    const pauseAutoplay = () => {
-      if (autoplayInterval) {
-        clearInterval(autoplayInterval)
-        setTimeout(startAutoplay, 8000)
-      }
-    }
-
-    // Autoplay de imágenes de cada proyecto
+    // Autoplay de imágenes para cada proyecto individual
     const startImageAutoplay = () => {
       projects.value.forEach((project, index) => {
         if (project.images.length > 1) {
           imageAutoplayIntervals[index] = setInterval(() => {
-            nextProjectImage(index)
-          }, 3000)
+            nextProjectImage(project)
+          }, 3000) // Cambia cada 3 segundos
         }
       })
     }
@@ -226,30 +177,32 @@ export default {
 
     // Manejo de errores de imagen
     const handleImageError = (event) => {
-      event.target.src = '/api/placeholder/600/300?text=Error-Loading-Image'
+      event.target.src = '/api/placeholder/600/250?text=Error-Loading-Image'
+    }
+
+    // Método para agregar más proyectos dinámicamente (mantiene tu funcionalidad original)
+    const addProject = (project) => {
+      projects.value.push({
+        ...project,
+        currentImageIndex: 0
+      })
     }
 
     onMounted(() => {
-      startAutoplay()
       startImageAutoplay()
     })
 
     onUnmounted(() => {
-      if (autoplayInterval) {
-        clearInterval(autoplayInterval)
-      }
       stopImageAutoplay()
     })
 
     return {
       projects,
-      currentSlide,
-      nextSlide,
-      previousSlide,
-      goToSlide,
+      projectPairs,
       changeProjectImage,
       openProject,
-      handleImageError
+      handleImageError,
+      addProject
     }
   }
 }
