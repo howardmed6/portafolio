@@ -103,7 +103,27 @@ export default {
       { url: "../image/posicionamientoyflexbos.png", titulo: "HTML Y CSS: CLASES, POSICIONAMIENTO Y FLEXBOX" },
       { url: "../image/ides.png", titulo: "HTML Y CSS: AMBIENTES DE DESARROLLO, ESTRUCTURA DE ARCHIVOS Y TAGS" },
       { url: "../image/gitygithubs.png", titulo: "GIT Y GITHUB: REPOSITORIO, COMMIT Y VERSIONES" },
-      { url: "../image/chatgpt.png", titulo: "CHATGPT: OPTIMIZANDO LA CALIDAD DE LOS RESULTADOS" }
+      { url: "../image/chatgpt.png", titulo: "CHATGPT: OPTIMIZANDO LA CALIDAD DE LOS RESULTADOS" },
+      { url: "../image/chatgptprogramacion.png", titulo: "CHATGPT Y PROGRAMACIÓN: AUMENTA TU PRODUCTIVIDAD" },
+      { url: "../image/condicionalesjava.png", titulo: " PRACTICANDO JAVA: CONDICIONALES CON IF/ELSE" },
+      { url: "../image/creandomiaplicacion.png", titulo: "JAVA: CREANDO TU PRIMERA APLICACIÓN" },
+      { url: "../image/fundamentosdeagilidad.png", titulo: "FUNDAMENTOS DE AGILIDAD: PRIMEROS PASOS PARA LA TRANSFORMACIÓN ÁGIL" },
+      { url: "../image/htmlycssambientesdedesarrollo.png", titulo: " HTML Y CSS: AMBIENTES DE DESARROLLO, ESTRUCTURA DE ARCHIVOS Y TAGS" },
+      { url: "../image/htmlycssposicionamiento.png", titulo: " HTML Y CSS: CLASES, POSICIONAMIENTO Y FLEXBOX" },
+      { url: "../image/integraciondeunaaplicacion.png", titulo: "SPRING AI: INTEGRA UNA APLICACIÓN CON OPENAI" },
+      { url: "../image/javaapiarchivos.png", titulo: "  JAVA: CONSUMIR API, ESCRIBIR ARCHIVOS Y MANEJAR ERRORES" },
+      { url: "../image/javalistasyconsultas.png", titulo: "JAVA: TRABAJAR CON LISTAS Y COLECCIONES DE DATOS" },
+      { url: "../image/javalombandos.png", titulo: " JAVA: TRABAJANDO CON LAMBDAS, STREAMS Y SPRING FRAMEWORK" },
+      { url: "../image/javapersistenciadedatosyconsultas.png", titulo: " JAVA: PERSISTENCIA DE DATOS Y CONSULTAS CON SPRING DATA JPA" },
+      { url: "../image/javaporgramacionorientada.png", titulo: "JAVA: APLICANDO LA ORIENTACIÓN A OBJETOS" },
+      { url: "../image/javascriptlogicadeprogramacion.png", titulo: "LÓGICA DE PROGRAMACIÓN: SUMÉRGETE EN LA PROGRAMACIÓN CON JAVASCRIPT" },
+      { url: "../image/logicadeprogramacion.png", titulo: " LÓGICA DE PROGRAMACIÓN: EXPLORAR FUNCIONES Y LISTAS" },
+      { url: "../image/practicandoconjava.png", titulo: "PRACTICANDO CON JAVA: CHALLENGE CONVERSOR DE MONEDAS" },
+
+
+
+
+
     ])
 
     const nextSlide = () => {
