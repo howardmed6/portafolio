@@ -116,9 +116,10 @@ export default {
         description: 'Plataforma web interactiva para explorar y compartir historias.',
         technologies: ['Vue.js', 'Node.js', 'SupaBase'],
         images: [
-          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/rehistoria-1.jpg',
-          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/rehistoria-2.jpg',
-          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/rehistoria-3.jpg'
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598576/msedge_kwSUBDRcn8_bvuxgq.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598711/msedge_aveJfy6YRX_lzzyxc.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598818/msedge_sSzMTZMFHM_vperne.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598903/msedge_0DoBx9d8nK_gvjyvs.png'
         ],
         currentImageIndex: 0
       },
