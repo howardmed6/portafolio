@@ -48,9 +48,7 @@
       <AppProjects />
      </section>
 
-     <section>
-      <AppProjectsCarousel />
-     </section>
+
 
      <section>
       <AppContact />
@@ -69,7 +67,6 @@ import AppContact from '@/components/AppContact.vue'
 import AppProfile from '@/components/AppProfile.vue'
 import AppProjects from '@/components/AppProjects.vue'
 import AppCertificates from '@/components/AppCertificates.vue'
-import AppProjectsCarousel from '@/components/AppProjectsCarousel.vue'
 
 
 
@@ -83,8 +80,8 @@ export default {
     AppContact,
     AppProfile,
     AppProjects,
-    AppCertificates,
-    AppProjectsCarousel
+    AppCertificates
+    
   },
   setup() {
     const stars = ref([])
