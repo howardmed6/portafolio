@@ -82,9 +82,10 @@ export default {
         description: 'Plataforma web interactiva para explorar y compartir historias.',
         technologies: ['Vue.js', 'Node.js', 'SupaBase'],
         images: [
-          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/rehistoria-1.jpg',
-          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/rehistoria-2.jpg',
-          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/rehistoria-3.jpg'
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598576/msedge_kwSUBDRcn8_bvuxgq.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598711/msedge_aveJfy6YRX_lzzyxc.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598818/msedge_sSzMTZMFHM_vperne.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598903/msedge_0DoBx9d8nK_gvjyvs.png'
         ],
         currentImageIndex: 0
       },
@@ -94,8 +95,8 @@ export default {
         description: 'Aplicación de comercio y formatos.',
         technologies: ['React', 'Firebase', 'React Native Móvil'],
         images: [
-          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/corquark-1.jpg',
-          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/corquark-2.jpg'
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598974/msedge_sT2aX7w83J_vwaq7x.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756599034/msedge_sVwVC0oquA_o6ccwb.png'
         ],
         currentImageIndex: 0
       },
@@ -105,9 +106,9 @@ export default {
         description: 'Portal informativo sobre Francia con noticias y guías de viaje.',
         technologies: ['Angular', 'D3.js', 'Express'],
         images: [
-          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/francia-1.jpg',
-          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/francia-2.jpg',
-          'https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567890/francia-3.jpg'
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756599088/msedge_Scu4CfYEoT_msh19n.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756599220/msedge_bj5VhqTktl_nbxlpi.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756599277/msedge_O9X0WGP3Ts_t0tr4e.png'
         ],
         currentImageIndex: 0
       },
