@@ -1,0 +1,304 @@
+/* AppProjects.css - Estilos futuristas para proyectos */
+
+.futuristic-projects-section {
+  padding: 40px 0;
+  min-height: calc(100vh - 200px);
+}
+
+.futuristic-projects-container {
+  max-width: 1200px;
+  margin: 60px auto 100px;
+  padding: 30px;
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+              0 0 20px rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.futuristic-projects-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4),
+              0 0 30px rgba(0, 255, 255, 0.15);
+}
+
+.futuristic-section-title {
+  color: #00d4aa;
+  text-shadow: 0 0 10px rgba(0, 212, 170, 0.5),
+               0 0 20px rgba(0, 212, 170, 0.3);
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  font-weight: 600;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+}
+
+.futuristic-projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.futuristic-project-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  transition: all 0.3s ease;
+}
+
+.futuristic-project-item {
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3),
+              0 0 15px rgba(0, 212, 170, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.futuristic-project-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4aa, transparent);
+  animation: projectGlow 4s linear infinite;
+}
+
+.futuristic-project-item:nth-child(even)::before {
+  animation-delay: 2s;
+}
+
+@keyframes projectGlow {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.futuristic-project-item:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 255, 255, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4),
+              0 0 25px rgba(0, 212, 170, 0.2);
+}
+
+/* === IFRAME CONTAINER === */
+.futuristic-iframe-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.futuristic-iframe-container:hover {
+  border-color: rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.futuristic-project-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.futuristic-iframe-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.futuristic-iframe-container:hover .futuristic-iframe-overlay {
+  opacity: 1;
+}
+
+.futuristic-visit-link {
+  background: linear-gradient(135deg,
+              rgba(0, 212, 170, 0.9),
+              rgba(0, 255, 255, 0.9));
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 212, 170, 0.4);
+}
+
+.futuristic-visit-link:hover {
+  background: linear-gradient(135deg,
+              rgba(0, 255, 255, 0.9),
+              rgba(0, 212, 170, 0.9));
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5);
+  border-color: #00d4aa;
+}
+
+/* === PROJECT INFO === */
+.futuristic-project-info {
+  text-align: left;
+}
+
+.futuristic-project-title {
+  color: #00d4aa;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(0, 212, 170, 0.5);
+  transition: all 0.3s ease;
+}
+
+.futuristic-project-item:hover .futuristic-project-title {
+  color: #00ffff;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+}
+
+.futuristic-project-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.futuristic-project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.futuristic-tech-tag {
+  background: rgba(0, 212, 170, 0.2);
+  border: 1px solid rgba(0, 212, 170, 0.4);
+  color: #00d4aa;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(0, 212, 170, 0.3);
+}
+
+.futuristic-tech-tag:hover {
+  background: rgba(0, 212, 170, 0.3);
+  border-color: rgba(0, 212, 170, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .futuristic-projects-container {
+    margin: 40px auto 80px;
+    padding: 25px;
+  }
+
+  .futuristic-iframe-container {
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .futuristic-project-pair {
+    grid-template-columns: 1fr; /* Una columna en móvil */
+    gap: 20px;
+  }
+
+  .futuristic-projects-container {
+    padding: 20px;
+    margin: 30px auto 60px;
+  }
+
+  .futuristic-section-title {
+    font-size: 1.6rem;
+  }
+
+  .futuristic-project-item {
+    padding: 15px;
+  }
+
+  .futuristic-iframe-container {
+    height: 200px;
+  }
+
+  .futuristic-project-title {
+    font-size: 1.2rem;
+  }
+
+  .futuristic-project-description {
+    font-size: 0.9rem;
+  }
+
+  .futuristic-tech-tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .futuristic-projects-container {
+    margin: 20px auto 40px;
+    padding: 15px;
+  }
+
+  .futuristic-iframe-container {
+    height: 180px;
+  }
+
+  .futuristic-visit-link {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .futuristic-project-tech {
+    gap: 6px;
+  }
+}
+
+/* === ANIMACIONES DE ENTRADA === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.futuristic-project-item {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.futuristic-project-pair:nth-child(1) .futuristic-project-item:nth-child(1) { animation-delay: 0.1s; }
+.futuristic-project-pair:nth-child(1) .futuristic-project-item:nth-child(2) { animation-delay: 0.2s; }
+.futuristic-project-pair:nth-child(2) .futuristic-project-item:nth-child(1) { animation-delay: 0.3s; }
+.futuristic-project-pair:nth-child(2) .futuristic-project-item:nth-child(2) { animation-delay: 0.4s; }
