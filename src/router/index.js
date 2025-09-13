@@ -4,6 +4,7 @@ import AppContactPage from '../pages/AppContactPage.vue'
 import AppAboutmePage from '../pages/AppAboutmePage.vue'
 import AppCookiesPage from '@/pages/AppCookiesPage.vue'
 import AppPrivacyPage from '@/pages/AppPrivacyPage.vue'
+import NeighborhoodInfographicPage from '../pages/NeighborhoodInfographicPage.vue'
 
 
 
@@ -32,7 +33,13 @@ const routes = [
      path: '/privacy',
      name: 'Privacy',
      component: AppPrivacyPage
+   },
+   {
+     path: '/senaneighborhoodInfographic',
+     name: 'NeighborhoodInfographic',
+     component: NeighborhoodInfographicPage
    }
+
 ]
 
 
