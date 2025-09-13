@@ -1,77 +1,150 @@
 <template>
-  <div class="container">
-    <!-- Header -->
-    <div class="header">
-      <h1>🏘️ My Neighborhood</h1>
-      <div class="subtitle">{{ neighborhood }} - {{ city }}</div>
-    </div>
-
-    <!-- Personal Information -->
-    <div class="personal-info">
-      <h3>📋 Student Information</h3>
-      <div class="info-grid">
-        <div class="info-item">
-          <div class="info-icon">👤</div>
-          <span><strong>Name:</strong> {{ studentName }}</span>
-        </div>
-        <div class="info-item">
-          <div class="info-icon">🆔</div>
-          <span><strong>ID:</strong> {{ studentId }}</span>
-        </div>
-        <div class="info-item">
-          <div class="info-icon">📚</div>
-          <span><strong>Program:</strong> {{ program }}</span>
-        </div>
-        <div class="info-item">
-          <div class="info-icon">🏫</div>
-          <span><strong>Code:</strong> {{ programCode }}</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-      <!-- Introduction -->
-      <div class="intro-message">
-        <h2>🌟 Welcome to My Neighborhood!</h2>
-        <p>{{ introMessage }}</p>
+  <div class="app-wrapper">
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1>🏘️ My Neighborhood</h1>
+        <div class="subtitle">{{ neighborhood }} - {{ city }}</div>
       </div>
 
-      <!-- Interactive Neighborhood Map -->
-      <div class="neighborhood-map">
-        <div 
-          v-for="(item, index) in mapItems" 
-          :key="index"
-          :class="['map-item', item.type]"
-          @click="selectLocation(item)"
-        >
-          <div class="map-icon">{{ item.icon }}</div>
-          <div class="map-label">{{ item.label }}</div>
+      <!-- Personal Information -->
+      <div class="personal-info">
+        <h3>📋 Student Information</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-icon">👤</div>
+            <span><strong>Name:</strong> {{ studentName }}</span>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🆔</div>
+            <span><strong>ID:</strong> {{ studentId }}</span>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📚</div>
+            <span><strong>Program:</strong> {{ program }}</span>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🏫</div>
+            <span><strong>Code:</strong> {{ programCode }}</span>
+          </div>
         </div>
       </div>
 
-      <!-- Location Details -->
-      <div class="locations-grid">
-        <div 
-          v-for="location in locationDetails" 
-          :key="location.id"
-          :class="['location-card', location.position]"
-        >
-          <h4>
-            <div class="location-icon" :style="{ background: location.color }">
-              {{ location.icon }}
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Introduction -->
+        <div class="intro-message">
+          <h2>🌟 Welcome to My Neighborhood!</h2>
+          <p>{{ introMessage }}</p>
+        </div>
+
+        <!-- Interactive Neighborhood Map -->
+        <div class="neighborhood-map">
+          <div 
+            v-for="(item, index) in mapItems" 
+            :key="index"
+            :class="['map-item', item.type]"
+            @click="selectLocation(item)"
+          >
+            <div class="map-icon">{{ item.icon }}</div>
+            <div class="map-label">{{ item.label }}</div>
+          </div>
+        </div>
+
+        <!-- Location Details -->
+        <div class="locations-grid">
+          <div 
+            v-for="location in locationDetails" 
+            :key="location.id"
+            :class="['location-card', location.position]"
+          >
+            <h4>
+              <div class="location-icon" :style="{ background: location.color }">
+                {{ location.icon }}
+              </div>
+              {{ location.title }}
+            </h4>
+            <p v-html="location.description"></p>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="description">
+          <h3>📝 About {{ neighborhood }}</h3>
+          <p>{{ fullDescription }}</p>
+          <div class="word-count">Word count: {{ wordCount }} words ✅</div>
+        </div>
+
+        <!-- Neighborhood Stats -->
+        <div class="stats-section">
+          <h3>📊 Neighborhood Statistics</h3>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">🏪</div>
+              <div class="stat-number">{{ neighborhoodStats.stores }}</div>
+              <div class="stat-label">Total Stores</div>
             </div>
-            {{ location.title }}
-          </h4>
-          <p v-html="location.description"></p>
+            <div class="stat-card">
+              <div class="stat-icon">🏫</div>
+              <div class="stat-number">{{ neighborhoodStats.schools }}</div>
+              <div class="stat-label">Schools</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🏠</div>
+              <div class="stat-number">{{ neighborhoodStats.houses }}</div>
+              <div class="stat-label">Neighbor Houses</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🛣️</div>
+              <div class="stat-number">{{ neighborhoodStats.streets }}</div>
+              <div class="stat-label">Streets</div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Description -->
-      <div class="description">
-        <h3>📝 About {{ neighborhood }}</h3>
-        <p>{{ fullDescription }}</p>
-        <div class="word-count">Word count: {{ wordCount }} words ✅</div>
+        <!-- Soccer Field Section -->
+        <div class="soccer-section">
+          <h3>⚽ My Favorite Place - Soccer Field</h3>
+          <div class="soccer-content">
+            <div class="soccer-field">
+              <div class="field-grass">
+                <div class="center-circle"></div>
+                <div class="goal goal-left"></div>
+                <div class="goal goal-right"></div>
+                <div class="penalty-area penalty-left"></div>
+                <div class="penalty-area penalty-right"></div>
+                <div class="center-line"></div>
+                <div class="soccer-ball">⚽</div>
+              </div>
+            </div>
+            <div class="soccer-info">
+              <div class="soccer-card">
+                <h4>🏃‍♂️ Sunday Football</h4>
+                <p><strong>One block away</strong> from my house, there is an amazing soccer field where I play football <strong>every Sunday</strong> with my friends and neighbors.</p>
+              </div>
+              <div class="soccer-card">
+                <h4>👥 Community Activity</h4>
+                <p>This field brings our community together. People from <strong>around</strong> the neighborhood come to watch the games and cheer for their favorite teams.</p>
+              </div>
+              <div class="soccer-card">
+                <h4>📍 Perfect Location</h4>
+                <p>The soccer field is located <strong>near</strong> several houses and <strong>across from</strong> one of the local stores, making it easily accessible for everyone.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Community Benefits -->
+        <div class="benefits-section">
+          <h3>🌟 Why I Love Living in Barrio Oriente</h3>
+          <div class="benefits-grid">
+            <div v-for="benefit in communityBenefits" :key="benefit.id" class="benefit-card">
+              <div class="benefit-icon">{{ benefit.icon }}</div>
+              <h4>{{ benefit.title }}</h4>
+              <p>{{ benefit.description }}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -159,6 +232,50 @@ export default {
           color: '#3498db',
           description: '<strong>Near</strong> my home, there are six different stores, two schools, one clothing store, a small booth, and a restaurant where we can eat delicious local food.'
         }
+      ],
+      neighborhoodStats: {
+        stores: 8,
+        schools: 2,
+        houses: 15,
+        streets: 6
+      },
+      communityBenefits: [
+        {
+          id: 1,
+          icon: '🤝',
+          title: 'Strong Community',
+          description: 'Neighbors know each other and help one another. We have a real sense of belonging and friendship.'
+        },
+        {
+          id: 2,
+          icon: '🚶‍♂️',
+          title: 'Walkable Distance',
+          description: 'Everything I need is within walking distance. I can reach stores, schools, and the soccer field easily on foot.'
+        },
+        {
+          id: 3,
+          icon: '🏃‍♂️',
+          title: 'Active Lifestyle',
+          description: 'The soccer field promotes an active lifestyle. Every Sunday, the whole community gets together for football games.'
+        },
+        {
+          id: 4,
+          icon: '🌅',
+          title: 'Peaceful Environment',
+          description: 'Despite being active and full of life, Barrio Oriente maintains a peaceful atmosphere perfect for families.'
+        },
+        {
+          id: 5,
+          icon: '💰',
+          title: 'Affordable Living',
+          description: 'The variety of local stores provides affordable options for daily needs without traveling far from home.'
+        },
+        {
+          id: 6,
+          icon: '📚',
+          title: 'Educational Access',
+          description: 'With two schools nearby, education is easily accessible for children and families in our community.'
+        }
       ]
     }
   },
@@ -185,14 +302,22 @@ export default {
   box-sizing: border-box;
 }
 
+.app-wrapper {
+  background: linear-gradient(135deg, #dc2626 0%, #2563eb 100%);
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
   overflow: hidden;
   font-family: 'Arial', sans-serif;
+  backdrop-filter: blur(10px);
 }
 
 .header {
@@ -388,25 +513,6 @@ export default {
   margin-top: 15px;
   font-style: italic;
   color: #7f8c8d;
-}
-
-@media (max-width: 768px) {
-  .neighborhood-map {
-    grid-template-columns: repeat(3, 1fr);
-    height: 300px;
-  }
-  
-  .header h1 {
-    font-size: 2em;
-  }
-  
-  .locations-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .stats-grid, .benefits-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 /* Stats Section */
@@ -629,6 +735,23 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .neighborhood-map {
+    grid-template-columns: repeat(3, 1fr);
+    height: 300px;
+  }
+  
+  .header h1 {
+    font-size: 2em;
+  }
+  
+  .locations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid, .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .soccer-content {
     grid-template-columns: 1fr;
   }
