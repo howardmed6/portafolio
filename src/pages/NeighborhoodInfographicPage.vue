@@ -306,18 +306,19 @@ export default {
   background: linear-gradient(135deg, #dc2626 0%, #2563eb 100%);
   min-height: 100vh;
   font-family: 'Arial', sans-serif;
-  padding: 20px;
+  padding: 30px;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   overflow: hidden;
   font-family: 'Arial', sans-serif;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .header {
