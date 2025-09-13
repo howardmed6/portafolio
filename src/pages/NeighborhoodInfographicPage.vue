@@ -403,5 +403,239 @@ export default {
   .locations-grid {
     grid-template-columns: 1fr;
   }
+
+  .stats-grid, .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Stats Section */
+.stats-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 40px;
+}
+
+.stats-section h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.5em;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-icon {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.stat-number {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+/* Soccer Section */
+.soccer-section {
+  background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 40px;
+  color: #2c5530;
+}
+
+.soccer-section h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.5em;
+  color: #1e3a20;
+}
+
+.soccer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.soccer-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.field-grass {
+  width: 300px;
+  height: 200px;
+  background: linear-gradient(135deg, #2e8b57, #228b22);
+  border-radius: 10px;
+  position: relative;
+  border: 3px solid #ffffff;
+  overflow: hidden;
+}
+
+.center-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  border: 2px solid white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: white;
+  transform: translateX(-50%);
+}
+
+.goal {
+  position: absolute;
+  width: 20px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.8);
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 3px;
+}
+
+.goal-left {
+  left: -10px;
+}
+
+.goal-right {
+  right: -10px;
+}
+
+.penalty-area {
+  position: absolute;
+  width: 60px;
+  height: 100px;
+  border: 2px solid white;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.penalty-left {
+  left: 0;
+}
+
+.penalty-right {
+  right: 0;
+}
+
+.soccer-ball {
+  position: absolute;
+  top: 45%;
+  left: 55%;
+  font-size: 1.5em;
+  z-index: 10;
+}
+
+.soccer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.soccer-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #2e8b57;
+}
+
+.soccer-card h4 {
+  margin-bottom: 8px;
+  color: #1e3a20;
+}
+
+.soccer-card p {
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+/* Benefits Section */
+.benefits-section {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 40px;
+  color: #8b1538;
+}
+
+.benefits-section h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.5em;
+  color: #6b1028;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.benefit-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-top: 4px solid #ff6b9d;
+}
+
+.benefit-icon {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.benefit-card h4 {
+  margin-bottom: 10px;
+  color: #6b1028;
+}
+
+.benefit-card p {
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: #8b1538;
+}
+
+@media (max-width: 768px) {
+  .soccer-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .field-grass {
+    width: 250px;
+    height: 160px;
+  }
 }
 </style>
