@@ -86,11 +86,18 @@
   box-shadow: 0 0 14px rgba(255, 215, 0, 0.15);
 }
 
+.lang-flag {
+  font-style: normal;
+  font-size: 1.1rem;
+  margin-right: 4px;
+}
+
 .lang-divider {
   color: rgba(255, 215, 0, 0.2);
   font-size: 1.1rem;
   user-select: none;
 }
+
 
 /* ── Timeline ── */
 .futuristic-timeline {

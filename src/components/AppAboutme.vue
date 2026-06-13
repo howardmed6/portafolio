@@ -3,20 +3,24 @@
   <section class="futuristic-timeline-section">
     <div class="futuristic-timeline-container">
       <div class="futuristic-timeline-header">
-        <h2 class="futuristic-section-title">Cronología Profesional</h2>
-        <p class="futuristic-subtitle">Haz clic para expandir cada etapa</p>
+        <h2 class="futuristic-section-title">
+          {{ lang === 'es' ? 'Cronología Profesional' : 'Professional Timeline' }}
+        </h2>
+        <p class="futuristic-subtitle">
+          {{ lang === 'es' ? 'Haz clic para expandir cada etapa' : 'Click to expand each stage' }}
+        </p>
 
         <!-- Toggle de idioma -->
         <div class="lang-toggle">
           <button
             :class="['lang-btn', { active: lang === 'es' }]"
             @click="lang = 'es'"
-          >ES</button>
+          ><span class="lang-flag">&#127464;&#127476;</span> Español</button>
           <span class="lang-divider">|</span>
           <button
             :class="['lang-btn', { active: lang === 'en' }]"
             @click="lang = 'en'"
-          >EN</button>
+          ><span class="lang-flag">&#127482;&#127480;</span> English</button>
         </div>
       </div>
 
@@ -61,7 +65,7 @@ import { ref, computed, onMounted } from 'vue'
 export default {
   name: 'AppAboutme',
   setup() {
-    const lang = ref('es')
+    const lang = ref('en')
     const collapsedItems = ref({})
 
     const timelineES = ref([
