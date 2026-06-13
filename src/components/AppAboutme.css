@@ -72,6 +72,8 @@
   border-radius: 30px;
   transition: all 0.3s ease;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
 }
 
 .lang-btn:hover {
@@ -87,9 +89,14 @@
 }
 
 .lang-flag {
-  font-style: normal;
-  font-size: 1.1rem;
-  margin-right: 4px;
+  display: inline-block;
+  width: 22px;
+  height: 15px;
+  margin-right: 7px;
+  vertical-align: middle;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  flex-shrink: 0;
 }
 
 .lang-divider {

@@ -15,12 +15,31 @@
           <button
             :class="['lang-btn', { active: lang === 'es' }]"
             @click="lang = 'es'"
-          ><span class="lang-flag">&#127464;&#127476;</span> Español</button>
+          >
+            <svg class="lang-flag" viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg">
+              <rect width="20" height="4.67" y="0" fill="#FCD116"/>
+              <rect width="20" height="4.67" y="4.67" fill="#003893"/>
+              <rect width="20" height="4.67" y="9.33" fill="#CE1126"/>
+            </svg>
+            Español
+          </button>
           <span class="lang-divider">|</span>
           <button
             :class="['lang-btn', { active: lang === 'en' }]"
             @click="lang = 'en'"
-          ><span class="lang-flag">&#127482;&#127480;</span> English</button>
+          >
+            <svg class="lang-flag" viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg">
+              <rect width="20" height="14" fill="#B22234"/>
+              <rect width="20" height="1.08" y="1.08" fill="#fff"/>
+              <rect width="20" height="1.08" y="3.23" fill="#fff"/>
+              <rect width="20" height="1.08" y="5.38" fill="#fff"/>
+              <rect width="20" height="1.08" y="7.54" fill="#fff"/>
+              <rect width="20" height="1.08" y="9.69" fill="#fff"/>
+              <rect width="20" height="1.08" y="11.85" fill="#fff"/>
+              <rect width="8" height="7.54" fill="#3C3B6E"/>
+            </svg>
+            English
+          </button>
         </div>
       </div>
 
