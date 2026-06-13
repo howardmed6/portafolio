@@ -1,4 +1,4 @@
-/* AppSobreMi.css - Estilos futuristas para la cronología */
+/* AppAboutme.css - Estilos futuristas para la cronología */
 
 .futuristic-timeline-section {
   padding: 40px 0;
@@ -44,10 +44,53 @@
 .futuristic-subtitle {
   color: rgba(255, 255, 255, 0.7);
   font-size: 1rem;
-  margin: 0;
+  margin: 0 0 20px 0;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
+/* ── Language Toggle ── */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 6px 16px;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: rgba(0, 255, 255, 0.45);
+  padding: 4px 10px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+  color: rgba(0, 255, 255, 0.8);
+}
+
+.lang-btn.active {
+  color: #00ffff;
+  background: rgba(0, 255, 255, 0.12);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
+}
+
+.lang-divider {
+  color: rgba(0, 255, 255, 0.25);
+  font-size: 1rem;
+  user-select: none;
+}
+
+/* ── Timeline ── */
 .futuristic-timeline {
   position: relative;
   padding: 20px 0;
@@ -195,7 +238,7 @@
 }
 
 .futuristic-timeline-details.expanded {
-  max-height: 1000px;
+  max-height: 2000px;
   opacity: 1;
 }
 
@@ -220,7 +263,6 @@
   margin-bottom: 0;
 }
 
-/* Efectos adicionales para mejorar la experiencia */
 .futuristic-timeline-item:nth-child(odd) .futuristic-timeline-content {
   background: rgba(26, 26, 46, 0.9);
 }
@@ -229,7 +271,6 @@
   background: rgba(16, 16, 32, 0.8);
 }
 
-/* Animaciones de entrada */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -250,7 +291,7 @@
 .futuristic-timeline-item:nth-child(3) { animation-delay: 0.3s; }
 .futuristic-timeline-item:nth-child(4) { animation-delay: 0.4s; }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 768px) {
   .futuristic-timeline-container {
     margin: 40px auto 80px;
