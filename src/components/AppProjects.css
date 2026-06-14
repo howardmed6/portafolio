@@ -370,7 +370,103 @@
   text-shadow: 0 0 3px rgba(255, 255, 255, 0.08);
 }
 
-/* ── Responsive ── */
+/* ── Lightbox ── */
+.proj-lightbox {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.proj-lightbox-inner {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.proj-lightbox-img {
+  max-width: 90vw;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 40px rgba(0, 212, 170, 0.2);
+}
+
+.proj-lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: rgba(0, 212, 170, 0.15);
+  border: 1px solid rgba(0, 212, 170, 0.4);
+  color: #00d4aa;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.proj-lightbox-close:hover {
+  background: rgba(0, 255, 255, 0.25);
+  color: #00ffff;
+}
+
+.proj-lightbox-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.proj-lightbox-btn {
+  background: rgba(0, 212, 170, 0.15);
+  border: 1px solid rgba(0, 212, 170, 0.4);
+  color: #00d4aa;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.proj-lightbox-btn:hover {
+  background: rgba(0, 255, 255, 0.25);
+  color: #00ffff;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+}
+
+.proj-lightbox-counter {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  min-width: 50px;
+  text-align: center;
+}
+
+.proj-lightbox-title {
+  color: #00d4aa;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 212, 170, 0.4);
+  max-width: 80vw;
+}
 @media (max-width: 1024px) {
   .futuristic-projects-container {
     margin: 40px auto 80px;

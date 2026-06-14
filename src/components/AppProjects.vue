@@ -44,7 +44,7 @@
             class="futuristic-project-item"
           >
             <!-- Media: imágenes o video -->
-            <div class="futuristic-iframe-container" @click="openProject(project.url)">
+            <div class="futuristic-iframe-container" @click="handleProjectClick(project, pairIndex * 2 + index)">
               <!-- Video si existe -->
               <template v-if="project.video">
                 <video
@@ -84,7 +84,9 @@
 
               <div class="futuristic-iframe-overlay">
                 <span class="futuristic-visit-link">
-                  {{ lang === 'en' ? 'Visit Project' : 'Visitar Proyecto' }}
+                  {{ project.url === '#'
+                    ? (lang === 'en' ? '🔍 Preview images' : '🔍 Ver imágenes')
+                    : (lang === 'en' ? 'Visit Project' : 'Visitar Proyecto') }}
                 </span>
               </div>
             </div>
@@ -129,6 +131,20 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div v-if="lightbox.open" class="proj-lightbox" @click.self="closeLightbox">
+      <div class="proj-lightbox-inner">
+        <button class="proj-lightbox-close" @click="closeLightbox">✕</button>
+        <img :src="lightbox.images[lightbox.index]" :alt="lightbox.title" class="proj-lightbox-img"/>
+        <div class="proj-lightbox-nav" v-if="lightbox.images.length > 1">
+          <button class="proj-lightbox-btn" @click="lightboxPrev">&#10094;</button>
+          <span class="proj-lightbox-counter">{{ lightbox.index + 1 }} / {{ lightbox.images.length }}</span>
+          <button class="proj-lightbox-btn" @click="lightboxNext">&#10095;</button>
+        </div>
+        <div class="proj-lightbox-title">{{ lightbox.title }}</div>
       </div>
     </div>
   </section>
@@ -286,7 +302,30 @@ export default {
       return pairs
     })
 
-    const changeProjectImage = (projectIndex, imageIndex) => {
+    const lightbox = ref({ open: false, images: [], index: 0, title: '' })
+
+    const handleProjectClick = (project, projectIndex) => {
+      if (project.url && project.url !== '#') {
+        window.open(project.url, '_blank', 'noopener,noreferrer')
+      } else {
+        lightbox.value = {
+          open: true,
+          images: project.images,
+          index: project.currentImageIndex || 0,
+          title: project.title
+        }
+      }
+    }
+
+    const closeLightbox = () => { lightbox.value.open = false }
+
+    const lightboxNext = () => {
+      lightbox.value.index = (lightbox.value.index + 1) % lightbox.value.images.length
+    }
+
+    const lightboxPrev = () => {
+      lightbox.value.index = (lightbox.value.index - 1 + lightbox.value.images.length) % lightbox.value.images.length
+    }
       if (projects.value[projectIndex]) {
         projects.value[projectIndex].currentImageIndex = imageIndex
       }
@@ -307,9 +346,13 @@ export default {
       projects,
       projectPairs,
       expandedProjects,
+      lightbox,
       toggleExpand,
       changeProjectImage,
-      openProject,
+      handleProjectClick,
+      closeLightbox,
+      lightboxNext,
+      lightboxPrev,
       handleImageError
     }
   }
