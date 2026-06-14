@@ -1,4 +1,4 @@
-/* AppProjects.css - Estilos futuristas para proyectos con carousels manuales */
+/* AppProjects.css */
 
 .futuristic-projects-section {
   padding: 40px 0;
@@ -30,13 +30,72 @@
   text-shadow: 0 0 10px rgba(0, 212, 170, 0.5),
                0 0 20px rgba(0, 212, 170, 0.3);
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-size: 2rem;
   font-weight: 600;
   padding-bottom: 15px;
   border-bottom: 2px solid rgba(0, 255, 255, 0.3);
 }
 
+/* ── Language Toggle ── */
+.proj-lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 35px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 40px;
+  padding: 6px 8px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.proj-lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  padding: 6px 16px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.proj-lang-btn:hover {
+  color: rgba(255, 215, 0, 0.7);
+}
+
+.proj-lang-btn.active {
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.12);
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.15);
+}
+
+.proj-lang-divider {
+  color: rgba(255, 215, 0, 0.2);
+  font-size: 1.1rem;
+  user-select: none;
+}
+
+.proj-flag {
+  display: inline-block;
+  width: 22px;
+  height: 15px;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+}
+
+/* ── Grid ── */
 .futuristic-projects-grid {
   display: flex;
   flex-direction: column;
@@ -62,7 +121,6 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .futuristic-project-item::before {
@@ -92,7 +150,7 @@
               0 0 25px rgba(0, 212, 170, 0.2);
 }
 
-/* === CAROUSEL CONTAINER === */
+/* ── Media container ── */
 .futuristic-iframe-container {
   position: relative;
   width: 100%;
@@ -102,6 +160,7 @@
   margin-bottom: 20px;
   border: 2px solid rgba(0, 255, 255, 0.2);
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .futuristic-iframe-container:hover {
@@ -109,7 +168,6 @@
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
 
-/* Wrapper para las imágenes del carousel */
 .futuristic-images-wrapper {
   position: relative;
   width: 100%;
@@ -133,7 +191,16 @@
   opacity: 1;
 }
 
-/* Indicadores de imágenes para cada proyecto */
+/* ── Video ── */
+.futuristic-project-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* ── Image indicators ── */
 .futuristic-image-indicators {
   position: absolute;
   bottom: 10px;
@@ -159,6 +226,7 @@
   box-shadow: 0 0 10px rgba(0, 212, 170, 0.5);
 }
 
+/* ── Overlay ── */
 .futuristic-iframe-overlay {
   position: absolute;
   top: 0;
@@ -199,10 +267,9 @@
               rgba(0, 212, 170, 0.9));
   transform: scale(1.05);
   box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5);
-  border-color: #00d4aa;
 }
 
-/* === PROJECT INFO === */
+/* ── Project info ── */
 .futuristic-project-info {
   text-align: left;
 }
@@ -255,53 +322,78 @@
   box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
 }
 
-/* === RESPONSIVE === */
+/* ── Expand button ── */
+.proj-expand-btn {
+  margin-top: 14px;
+  background: rgba(0, 212, 170, 0.1);
+  border: 1px solid rgba(0, 212, 170, 0.35);
+  color: #00d4aa;
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 6px rgba(0, 212, 170, 0.4);
+  display: block;
+}
+
+.proj-expand-btn:hover {
+  background: rgba(0, 212, 170, 0.22);
+  border-color: rgba(0, 255, 255, 0.5);
+  color: #00ffff;
+  box-shadow: 0 0 12px rgba(0, 212, 170, 0.25);
+}
+
+/* ── Expand panel ── */
+.proj-expand-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.proj-expand-panel.open {
+  max-height: 400px;
+  opacity: 1;
+}
+
+.proj-expand-text {
+  margin-top: 14px;
+  padding: 14px 16px;
+  background: rgba(0, 255, 255, 0.04);
+  border-left: 3px solid #00d4aa;
+  border-radius: 0 10px 10px 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.08);
+}
+
+/* ── Responsive ── */
 @media (max-width: 1024px) {
   .futuristic-projects-container {
     margin: 40px auto 80px;
     padding: 25px;
   }
-
-  .futuristic-iframe-container {
-    height: 220px;
-  }
+  .futuristic-iframe-container { height: 220px; }
 }
 
 @media (max-width: 768px) {
   .futuristic-project-pair {
-    grid-template-columns: 1fr; /* Una columna en móvil */
+    grid-template-columns: 1fr;
     gap: 20px;
   }
-
   .futuristic-projects-container {
     padding: 20px;
     margin: 30px auto 60px;
   }
-
-  .futuristic-section-title {
-    font-size: 1.6rem;
-  }
-
-  .futuristic-project-item {
-    padding: 15px;
-  }
-
-  .futuristic-iframe-container {
-    height: 200px;
-  }
-
-  .futuristic-project-title {
-    font-size: 1.2rem;
-  }
-
-  .futuristic-project-description {
-    font-size: 0.9rem;
-  }
-
-  .futuristic-tech-tag {
-    font-size: 0.75rem;
-    padding: 4px 10px;
-  }
+  .futuristic-section-title { font-size: 1.6rem; }
+  .futuristic-project-item { padding: 15px; }
+  .futuristic-iframe-container { height: 200px; }
+  .futuristic-project-title { font-size: 1.2rem; }
+  .futuristic-project-description { font-size: 0.9rem; }
+  .futuristic-tech-tag { font-size: 0.75rem; padding: 4px 10px; }
 }
 
 @media (max-width: 480px) {
@@ -309,38 +401,23 @@
     margin: 20px auto 40px;
     padding: 15px;
   }
-
-  .futuristic-iframe-container {
-    height: 180px;
-  }
-
-  .futuristic-visit-link {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-
-  .futuristic-project-tech {
-    gap: 6px;
-  }
+  .futuristic-iframe-container { height: 180px; }
+  .futuristic-visit-link { padding: 10px 20px; font-size: 0.9rem; }
+  .futuristic-project-tech { gap: 6px; }
 }
 
-/* === ANIMACIONES DE ENTRADA === */
+/* ── Entry animations ── */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.futuristic-project-item {
-  animation: fadeInUp 0.6s ease forwards;
-}
-
+.futuristic-project-item { animation: fadeInUp 0.6s ease forwards; }
 .futuristic-project-pair:nth-child(1) .futuristic-project-item:nth-child(1) { animation-delay: 0.1s; }
 .futuristic-project-pair:nth-child(1) .futuristic-project-item:nth-child(2) { animation-delay: 0.2s; }
 .futuristic-project-pair:nth-child(2) .futuristic-project-item:nth-child(1) { animation-delay: 0.3s; }
 .futuristic-project-pair:nth-child(2) .futuristic-project-item:nth-child(2) { animation-delay: 0.4s; }
+.futuristic-project-pair:nth-child(3) .futuristic-project-item:nth-child(1) { animation-delay: 0.5s; }
+.futuristic-project-pair:nth-child(3) .futuristic-project-item:nth-child(2) { animation-delay: 0.6s; }
+.futuristic-project-pair:nth-child(4) .futuristic-project-item:nth-child(1) { animation-delay: 0.7s; }
+.futuristic-project-pair:nth-child(4) .futuristic-project-item:nth-child(2) { animation-delay: 0.8s; }
