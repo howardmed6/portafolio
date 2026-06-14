@@ -94,6 +94,7 @@ export default {
     let autoplayInterval = null
 
     const certificates = ref([
+      // ── Oracle / Alura ──
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576927/logicadeprogramacion_adhfgh.png", titulo: "LÓGICA DE PROGRAMACIÓN: EXPLORAR FUNCIONES Y LISTAS" },
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576925/javascriptlogicadeprogramacion_dwwnov.png", titulo: "LÓGICA DE PROGRAMACIÓN: SUMÉRGETE EN LA PROGRAMACIÓN CON JAVASCRIPT" },
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576922/amigosecreto_d2wh0b.png", titulo: "PRACTICANDO LÓGICA DE PROGRAMACIÓN: CHALLENGE AMIGO SECRETO" },
@@ -104,25 +105,32 @@ export default {
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576919/gitygithubs_hrflzc.png", titulo: "GIT Y GITHUB: REPOSITORIO, COMMIT Y VERSIONES" },
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576924/chatgpt_aw8ezu.png", titulo: "CHATGPT: OPTIMIZANDO LA CALIDAD DE LOS RESULTADOS" },
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576923/chatgptprogramacion_kqwgsg.png", titulo: "CHATGPT Y PROGRAMACIÓN: AUMENTA TU PRODUCTIVIDAD" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576923/condicionalesjava_xfsjlq.png", titulo: " PRACTICANDO JAVA: CONDICIONALES CON IF/ELSE" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576923/condicionalesjava_xfsjlq.png", titulo: "PRACTICANDO JAVA: CONDICIONALES CON IF/ELSE" },
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576921/creandomiaplicacion_c3zrms.png", titulo: "JAVA: CREANDO TU PRIMERA APLICACIÓN" },
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576922/fundamentosdeagilidad_mlbljj.png", titulo: "FUNDAMENTOS DE AGILIDAD: PRIMEROS PASOS PARA LA TRANSFORMACIÓN ÁGIL" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576925/ides_b8iggh.png", titulo: " HTML Y CSS: AMBIENTES DE DESARROLLO, ESTRUCTURA DE ARCHIVOS Y TAGS" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576926/posicionamientoyflexbos_ukmgwv.png", titulo: " HTML Y CSS: CLASES, POSICIONAMIENTO Y FLEXBOX" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576925/ides_b8iggh.png", titulo: "HTML Y CSS: AMBIENTES DE DESARROLLO, ESTRUCTURA DE ARCHIVOS Y TAGS" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576926/posicionamientoyflexbos_ukmgwv.png", titulo: "HTML Y CSS: CLASES, POSICIONAMIENTO Y FLEXBOX" },
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576925/integraciondeunaaplicacion_g7y5mq.png", titulo: "SPRING AI: INTEGRA UNA APLICACIÓN CON OPENAI" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576926/javaapiarchivos_lixqn4.png", titulo: "  JAVA: CONSUMIR API, ESCRIBIR ARCHIVOS Y MANEJAR ERRORES" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576926/javaapiarchivos_lixqn4.png", titulo: "JAVA: CONSUMIR API, ESCRIBIR ARCHIVOS Y MANEJAR ERRORES" },
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576921/javalombandos_ayayww.png", titulo: "JAVA: TRABAJAR CON LISTAS Y COLECCIONES DE DATOS" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576921/javalombandos_ayayww.png", titulo: " JAVA: TRABAJANDO CON LAMBDAS, STREAMS Y SPRING FRAMEWORK" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576923/javapersistenciadedatosyconsultas_emi6sr.png", titulo: " JAVA: PERSISTENCIA DE DATOS Y CONSULTAS CON SPRING DATA JPA" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576921/javalombandos_ayayww.png", titulo: "JAVA: TRABAJANDO CON LAMBDAS, STREAMS Y SPRING FRAMEWORK" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576923/javapersistenciadedatosyconsultas_emi6sr.png", titulo: "JAVA: PERSISTENCIA DE DATOS Y CONSULTAS CON SPRING DATA JPA" },
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576924/javaporgramacionorientada_xnuulh.png", titulo: "JAVA: APLICANDO LA ORIENTACIÓN A OBJETOS" },
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576928/surmergeteenlaprogramaci%C3%B2nconjavascript_iohigg.png", titulo: "LÓGICA DE PROGRAMACIÓN: SUMÉRGETE EN LA PROGRAMACIÓN CON JAVASCRIPT" },
-      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576922/funcionesylistas_lgha5x.png", titulo: " LÓGICA DE PROGRAMACIÓN: EXPLORAR FUNCIONES Y LISTAS" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576922/funcionesylistas_lgha5x.png", titulo: "LÓGICA DE PROGRAMACIÓN: EXPLORAR FUNCIONES Y LISTAS" },
       { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1756576926/practicandoconjava_rpukpl.png", titulo: "PRACTICANDO CON JAVA: CHALLENGE CONVERSOR DE MONEDAS" },
-
-
-
-
-
+      // ── Google Data Analytics ──
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1781450219/Google_Data_Analytics_Capstone_Complete_a_Case_Study_oaf20h.png", titulo: "GOOGLE DATA ANALYTICS CAPSTONE: COMPLETE A CASE STUDY" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1781450217/Data_Analysis_with_R_Programming_tfgp5e.png", titulo: "DATA ANALYSIS WITH R PROGRAMMING" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1781450217/Share_Data_Through_the_Art_of_Visualization_k8pfnb.png", titulo: "SHARE DATA THROUGH THE ART OF VISUALIZATION" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1781450218/Analyze_Data_to_Answer_Questions_s8widj.png", titulo: "ANALYZE DATA TO ANSWER QUESTIONS" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1781450217/Process_Data_from_Dirty_to_Clean_s9z2cd.png", titulo: "PROCESS DATA FROM DIRTY TO CLEAN" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1781450218/Prepare_Data_for_Exploration_uswmmx.png", titulo: "PREPARE DATA FOR EXPLORATION" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1781450217/Developing_Interpersonal_Skills_oyngdh.png", titulo: "DEVELOPING INTERPERSONAL SKILLS" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1781450217/Ask_Questions_to_Make_Data-Driven_Decisions_ni9u1u.png", titulo: "ASK QUESTIONS TO MAKE DATA-DRIVEN DECISIONS" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1781450218/Generative_AI_Prompt_Engineering_Basics_mxbyky.png", titulo: "GENERATIVE AI PROMPT ENGINEERING BASICS" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1781450218/Foundations_Data_Everywhere_jspiip.png", titulo: "FOUNDATIONS: DATA, DATA, EVERYWHERE" },
+      { url: "https://res.cloudinary.com/dpj17zdr2/image/upload/v1781450218/Accelerate_Your_Job_Search_with_AI_q4ux78.png", titulo: "ACCELERATE YOUR JOB SEARCH WITH AI" },
     ])
 
     const nextSlide = () => {
