@@ -326,14 +326,10 @@ export default {
     const lightboxPrev = () => {
       lightbox.value.index = (lightbox.value.index - 1 + lightbox.value.images.length) % lightbox.value.images.length
     }
+
+    const changeProjectImage = (projectIndex, imageIndex) => {
       if (projects.value[projectIndex]) {
         projects.value[projectIndex].currentImageIndex = imageIndex
-      }
-    }
-
-    const openProject = (url) => {
-      if (url && url !== '#') {
-        window.open(url, '_blank', 'noopener,noreferrer')
       }
     }
 
