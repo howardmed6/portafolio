@@ -220,7 +220,7 @@ export default {
         descriptionES: 'Canal de YouTube automatizado gestionado desde Telegram usando IA y servicios en la nube.',
         detailEN: 'A 32-script Python pipeline that automates trailer detection, video editing, metadata generation and YouTube uploads. Integrates YouTube Data API, TikTok Research API, FFmpeg, AWS Lambda, AWS CodePipeline, Azure Logic Apps, OpenAI (DALL-E, GPT), Claude (Anthropic) and Cloud Video Intelligence. Copyright detection and Supabase storage included. Controlled end-to-end via Telegram bot.',
         detailES: 'Pipeline de 32 scripts en Python que automatiza la detección de trailers, edición de video, generación de metadatos y subida a YouTube. Integra YouTube Data API, TikTok Research API, FFmpeg, AWS Lambda, AWS CodePipeline, Azure Logic Apps, OpenAI (DALL-E, GPT), Claude (Anthropic) y Cloud Video Intelligence. Incluye detección de copyright y almacenamiento en Supabase. Controlado desde Telegram.',
-        technologies: ['Python', 'FFmpeg', 'AWS Lambda', 'Azure', 'OpenAI', 'Claude API', 'Supabase', 'Telegram Bot'],
+        technologies: ['Python', 'FFmpeg', 'Azure Functions', 'Google Cloud', 'AWS Lambda', 'AWS CodePipeline', 'OpenAI', 'Claude API', 'Firebase', 'Telegram Bot'],
         images: [
           'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598576/msedge_kwSUBDRcn8_bvuxgq.png',
         ],
@@ -234,7 +234,7 @@ export default {
         descriptionES: 'Generador automatizado de videos cortos para contenido de películas y series, desplegado en la nube.',
         detailEN: 'Uses TheMovieDB API to fetch metadata, posters and content. Generates edited short videos with Python and JavaScript, deployed on Google Cloud Run and Render. A Cloudflare Worker wakes up Render on demand. Poster design, captions and publishing are all automated and controlled via Telegram.',
         detailES: 'Usa la API de TheMovieDB para obtener metadatos, posters y contenido. Genera videos cortos editados con Python y JavaScript, desplegados en Google Cloud Run y Render. Un worker de Cloudflare despierta a Render bajo demanda. El diseño de posters, subtítulos y publicación están automatizados y se controlan desde Telegram.',
-        technologies: ['Python', 'JavaScript', 'TheMovieDB API', 'Cloud Run', 'Render', 'Cloudflare', 'Telegram Bot'],
+        technologies: ['Python', 'JavaScript', 'TheMovieDB API', 'Google Cloud Run', 'Render', 'Cloudflare', 'Telegram Bot'],
         images: [
           'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598576/msedge_kwSUBDRcn8_bvuxgq.png',
         ],
@@ -248,7 +248,7 @@ export default {
         descriptionES: 'Automatización web inteligente impulsada por la API de Claude, Python y servicios serverless de AWS.',
         detailEN: 'A cloud-native automation system built with Python and the Claude (Anthropic) API. Runs on AWS Lambda and S3, handling intelligent web workflows triggered and controlled via Telegram. Designed for scalability with a fully serverless architecture.',
         detailES: 'Sistema de automatización nativo en la nube construido con Python y la API de Claude (Anthropic). Corre en AWS Lambda y S3, gestionando flujos web inteligentes disparados y controlados desde Telegram. Diseñado para escalar con arquitectura completamente serverless.',
-        technologies: ['Python', 'Claude API', 'AWS Lambda', 'AWS S3', 'Telegram Bot'],
+        technologies: ['Python', 'Claude API', 'AWS Lambda', 'AWS S3', 'Supabase', 'Telegram Bot'],
         images: [
           'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598576/msedge_kwSUBDRcn8_bvuxgq.png',
         ],
