@@ -76,28 +76,43 @@ export default {
       },
       {
         title: 'ONE Tech Foundation G8 - Back End',
-        issuer: 'Alura/Oracle',
+        issuer: 'Alura / Oracle',
         year: '2025',
         type: 'course',
         inProgress: false,
         skills: ['Spring Boot', 'JPA', 'MySQL', 'API REST']
       },
       {
-        title: 'Microsoft Azure DevOps',
-        issuer: 'Experiencia práctica - SQDM',
-        year: '2025',
-        type: 'experience',
-        inProgress: false,
-        skills: ['Azure', 'DevOps', 'CI/CD', 'Testing']
-      },
-      {
         title: 'Google Data Analytics',
         issuer: 'Google',
         year: '2025',
         type: 'course',
-        inProgress: true,
-        progress: 65,
+        inProgress: false,
         skills: ['Python', 'R', 'SQL', 'Tableau']
+      },
+      {
+        title: 'Automatización — Cypress',
+        issuer: 'Platzi',
+        year: '2025',
+        type: 'course',
+        inProgress: false,
+        skills: ['Cypress', 'E2E Testing', 'UI Automation', 'Pruebas Avanzadas']
+      },
+      {
+        title: 'Ruta de Fortalecimiento en TI — SQDM',
+        issuer: 'Platzi',
+        year: '2025',
+        type: 'course',
+        inProgress: false,
+        skills: ['Azure DevOps', 'CI/CD', 'Playwright', 'Puppeteer', 'Scrum', 'Power BI', 'Unit Testing', 'Blazor', 'Laravel TDD']
+      },
+      {
+        title: 'Microsoft Azure DevOps',
+        issuer: 'Experiencia profesional — SQDM',
+        year: '2025',
+        type: 'experience',
+        inProgress: false,
+        skills: ['Azure', 'DevOps', 'CI/CD', 'Testing']
       },
       {
         title: 'Ingeniería en Sistemas',
@@ -110,7 +125,6 @@ export default {
       }
     ])
 
-    // Método para agregar certificaciones dinámicamente
     const addCertificate = (certificate) => {
       certificates.value.push(certificate)
     }
