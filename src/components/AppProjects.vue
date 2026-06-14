@@ -206,7 +206,7 @@ export default {
         detailES: 'Sitio web limpio y profesional construido con Vue.js para una clienta que estudia psicología en la UNAD. Enfocado en accesibilidad, herramientas gratuitas y despliegue rápido.',
         technologies: ['Vue.js', 'CSS3', 'Free Hosting'],
         images: [
-          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756599088/msedge_Scu4CfYEoT_msh19n.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781457238/Jp6g9cWI0Q_i1nnuk.png,
         ],
         video: null,
         currentImageIndex: 0
@@ -222,7 +222,10 @@ export default {
         detailES: 'Pipeline de 32 scripts en Python que automatiza la detección de trailers, edición de video, generación de metadatos y subida a YouTube. Integra YouTube Data API, TikTok Research API, FFmpeg, AWS Lambda, AWS CodePipeline, Azure Logic Apps, OpenAI (DALL-E, GPT), Claude (Anthropic) y Cloud Video Intelligence. Incluye detección de copyright y almacenamiento en Supabase. Controlado desde Telegram.',
         technologies: ['Python', 'FFmpeg', 'Azure Functions', 'Google Cloud', 'AWS Lambda', 'AWS CodePipeline', 'OpenAI', 'Claude API', 'Firebase', 'Telegram Bot'],
         images: [
-          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598576/msedge_kwSUBDRcn8_bvuxgq.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781453427/msedge_3YTVnpswFG_dyhbwk.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781454951/ZoomIt64_eE9tKefDp9_xwtx5u.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781453165/Gemini_Generated_Image_9re88p9re88p9re8_m567h9.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781453156/1777658882271_uvdbmc.jpg',
         ],
         video: null,
         currentImageIndex: 0
@@ -234,9 +237,11 @@ export default {
         descriptionES: 'Generador automatizado de videos cortos para contenido de películas y series, desplegado en la nube.',
         detailEN: 'Uses TheMovieDB API to fetch metadata, posters and content. Generates edited short videos with Python and JavaScript, deployed on Google Cloud Run and Render. A Cloudflare Worker wakes up Render on demand. Poster design, captions and publishing are all automated and controlled via Telegram.',
         detailES: 'Usa la API de TheMovieDB para obtener metadatos, posters y contenido. Genera videos cortos editados con Python y JavaScript, desplegados en Google Cloud Run y Render. Un worker de Cloudflare despierta a Render bajo demanda. El diseño de posters, subtítulos y publicación están automatizados y se controlan desde Telegram.',
-        technologies: ['Python', 'JavaScript', 'TheMovieDB API', 'Google Cloud Run', 'Render', 'Cloudflare', 'Telegram Bot'],
+        technologies: ['Python', 'JavaScript', 'TheMovieDB API', 'Google Cloud Run', 'Tiktok Developer' 'Render', 'Cloudflare', 'Telegram Bot'],
         images: [
-          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598576/msedge_kwSUBDRcn8_bvuxgq.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781455125/ZoomIt64_96uSbC2mGy_m8dvvr.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781455292/ZoomIt64_aXzR2eUUeR_kvbjz4.png',
+
         ],
         video: null,
         currentImageIndex: 0
@@ -251,6 +256,9 @@ export default {
         technologies: ['Python', 'Claude API', 'AWS Lambda', 'AWS S3', 'Supabase', 'Telegram Bot'],
         images: [
           'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598576/msedge_kwSUBDRcn8_bvuxgq.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781455470/msedge_W2d6yYYSnW_bnma46.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781456749/ZoomIt64_APi0zfvmtt_bmornb.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781456751/ZoomIt64_FENEFdNX9C_azsutc.png',
         ],
         video: null,
         currentImageIndex: 0
@@ -264,7 +272,7 @@ export default {
         detailES: 'Diseño y mantenimiento de suites de pruebas automatizadas con Cypress y Selenium, aplicando el patrón Page Object Model. Integradas en pipelines CI/CD para aseguramiento continuo de calidad. Incluyó pruebas de API, regresión y cobertura funcional en múltiples entornos de clientes.',
         technologies: ['Cypress', 'Selenium', 'JavaScript', 'CI/CD', 'Page Object Model'],
         images: [
-          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1756598576/msedge_kwSUBDRcn8_bvuxgq.png',
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781456922/qa_automation_pipeline_gw9vcl.png',
         ],
         video: null,
         currentImageIndex: 0
