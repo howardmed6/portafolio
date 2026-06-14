@@ -4,14 +4,13 @@
     <!-- Sección del Perfil -->
     <div class="futuristic-profile-card">
       <div class="futuristic-profile-header">
-        <img src="/image/icon.svg" alt="Howard Medina Pineda" class="futuristic-profile-image">
-        <h1 class="futuristic-profile-name">Howard Medina Pineda</h1>
+      <img src="/image/FOTO.jpeg" alt="Howard Medina Pineda" class="futuristic-profile-image">        <h1 class="futuristic-profile-name">Howard Medina Pineda</h1>
       </div>
 
       <ul class="futuristic-profile-info">
         <li class="futuristic-info-item">
           <span class="futuristic-info-label">Edad:</span>
-          <span class="futuristic-info-value">21</span>
+          <span class="futuristic-info-value">23</span>
         </li>
         <li class="futuristic-info-item">
           <span class="futuristic-info-label">Nacionalidad:</span>
@@ -20,14 +19,14 @@
         <li class="futuristic-info-item">
           <span class="futuristic-info-label">Profesión:</span>
           <div class="futuristic-info-value">
-            <div class="futuristic-profession-item">Tester QA Junior</div>
+            <div class="futuristic-profession-item">QA Automation Engineer</div>
             <div class="futuristic-profession-item">Full Stack Developer</div>
-            <div class="futuristic-profession-item">Aprendiz en Ingeniería en Sistemas</div>
+            <div class="futuristic-profession-item">Data Analyst</div>
           </div>
         </li>
         <li class="futuristic-info-item">
           <span class="futuristic-info-label">Nivel de inglés:</span>
-          <span class="futuristic-info-value">A2</span>
+          <span class="futuristic-info-value">B2</span>
         </li>
       </ul>
     </div>
