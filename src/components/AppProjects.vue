@@ -206,7 +206,7 @@ export default {
         detailES: 'Sitio web limpio y profesional construido con Vue.js para una clienta que estudia psicología en la UNAD. Enfocado en accesibilidad, herramientas gratuitas y despliegue rápido.',
         technologies: ['Vue.js', 'CSS3', 'Free Hosting'],
         images: [
-          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781457238/Jp6g9cWI0Q_i1nnuk.png,
+          'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781457238/Jp6g9cWI0Q_i1nnuk.png',
         ],
         video: null,
         currentImageIndex: 0
@@ -237,11 +237,10 @@ export default {
         descriptionES: 'Generador automatizado de videos cortos para contenido de películas y series, desplegado en la nube.',
         detailEN: 'Uses TheMovieDB API to fetch metadata, posters and content. Generates edited short videos with Python and JavaScript, deployed on Google Cloud Run and Render. A Cloudflare Worker wakes up Render on demand. Poster design, captions and publishing are all automated and controlled via Telegram.',
         detailES: 'Usa la API de TheMovieDB para obtener metadatos, posters y contenido. Genera videos cortos editados con Python y JavaScript, desplegados en Google Cloud Run y Render. Un worker de Cloudflare despierta a Render bajo demanda. El diseño de posters, subtítulos y publicación están automatizados y se controlan desde Telegram.',
-        technologies: ['Python', 'JavaScript', 'TheMovieDB API', 'Google Cloud Run', 'Tiktok Developer' 'Render', 'Cloudflare', 'Telegram Bot'],
+        technologies: ['Python', 'JavaScript', 'TheMovieDB API', 'Google Cloud Run', 'TikTok Developer', 'Render', 'Cloudflare', 'Telegram Bot'],
         images: [
           'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781455125/ZoomIt64_96uSbC2mGy_m8dvvr.png',
           'https://res.cloudinary.com/dpj17zdr2/image/upload/v1781455292/ZoomIt64_aXzR2eUUeR_kvbjz4.png',
-
         ],
         video: null,
         currentImageIndex: 0
